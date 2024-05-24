@@ -1,16 +1,21 @@
 ---
 layout: archive
-title: "Publications"
+title: ""
 permalink: /publications/
 author_profile: true
 ---
 
-{% if site.author.googlescholar %}
-  <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
-{% endif %}
+# Preprints
 
-{% include base_path %}
+[Dynamic online matching with budget refills](https://arxiv.org/abs/2405.09920) <br/>
+Maria Cherifa, Clément Calauzènes, Vianney Perchet. May 2024
+ 
+Optimizing the coalition gain in Online Auctions with
+Greedy Structured Bandits<br/>
+Dorian Baudry, Hugo Richard, Maria Cherifa, Clément Calauzènes , Vianney Perchet. May 2024
 
-{% for post in site.publications reversed %}
-  {% include archive-single.html %}
-{% endfor %}
+[Flow Redirection for Epidemic Reaction-DIffusion Control](https://arxiv.org/abs/2202.02017) <br/>
+Pierre-Yves Massé ,Quentin Laborde,Maria Cherifa, Jules Olayé, Laurent Oudre. February 2022
+
+
+
