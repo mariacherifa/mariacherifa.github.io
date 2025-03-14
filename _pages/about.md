@@ -5,7 +5,7 @@ permalink: /
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: IMG_3747.jpg
   image_circular: false # crops the image to make it circular
   address: >
     <p>725C1, MAP5, Université Paris-Cité</p>
@@ -16,8 +16,4 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-PhD student under the supervision of [Julie Delon](https://judelo.github.io/) and [Agnès Desolneux](https://desolneux.perso.math.cnrs.fr/).
-
-I study Optimal Transport, in particular Generalised Wasserstein Barycentres, the Sliced Wasserstein Distance and GMM-restricted OT. 
-
-After my studies at [Ecole Polytechnique](https://www.polytechnique.edu/) (cycle ingénieur), I took the [Masters in Mathematics, Vision and Learning](https://www.master-mva.com/) ("MVA" in French), where I took [Gabriel Peyré](http://www.gpeyre.com/)'s "Optimal Transport" course. Enthralled, I took a project on [A Wasserstein distance between GMMs](https://hal.archives-ouvertes.fr/hal-02178204v4/document). This led me to an internship with Julie Delon and [Rémi Flamary](https://remi.flamary.com/index.fr.html) on [Generalised Wasserstein Barycentres](https://arxiv.org/pdf/2105.09755.pdf). This internship finished in September 2022, and I am now continuing this work and branching back to GMM-OT during my PhD.
+I am a third-year Ph.D. Student at ENSAE-CREST and Criteo AI Lab, under the supervision of [Vianney Perchet](https://www.ensae.fr/faculty/670-vianney-perchet) and [Clément Calauzènes](https://scholar.google.ca/citations?user=lFsKnyUAAAAJ&hl=en). My research focuses on online matching in bipartite graphs. Before my PhD, I graduated from the [master MVA (ENS Cachan)](https://www.master-mva.com) in 2021, with a major in machine learning.

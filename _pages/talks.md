@@ -6,88 +6,27 @@ description: #Materials for courses you taught. Replace this text with your desc
 nav: true
 nav_order: 6
 ---
+- 12/12/2024 [Conference on Neural Information Processing Systems Neurips](https://neurips.cc/Conferences/2024),Virtual.
 
-- 18/02/2025 [Séminaire
-  MLSP](https://www.ens-lyon.fr/PHYSIQUE/seminars/machine-learning-and-signal-processing),
-  [Equipe-Projet Inria OCKHAM](https://team.inria.fr/ockham/), ENS Lyon, 
+*Optimizing the coalition gain in Online Auctions with Greedy Structured
+Bandits*
+[slides](https://mariacherifa.github.io/assets/pdf/mamab_pres.pdf)
+
+- 10/09/2024 [International Workshop on Matching Under Preferences](https://www.dcs.gla.ac.uk/research/algorithms/MATCHUP2024/),Oxford England, 
   
-  *Properties of Discrete Sliced Wasserstein Losses*
-  [slides](https://eloitanguy.github.io/assets/pdf/slicedloss_slides.pdf)
+  *Dynamic online matching with budget refills*
+  [slides](https://www.dcs.gla.ac.uk/research/algorithms/MATCHUP2024/CHERIFA.pdf)
 
-- 17/02/2025 [Réunion GdR
-  IASIS](https://gdr-iasis.cnrs.fr/reunions/transport-optimal-et-ses-applications-en-machine-learning-et-analyse-de-donnees/),
-  ENS Lyon, 
+- 30/04/2024 Criteo, Séminaire de l'équipe Deep RL, 
+
+  *Optimizing the coalition gain in Online Auctions with Greedy Structured
+Bandits*
+ 
+- 23/12/2023 [From matchings to markets. A tale of Mathematics, Economics and Computer Science conference](https://conferences.cirm-math.fr/2879.html),CIRM Marseille, 
   
-  *Constrained Approximate Transport Maps*
-  [slides](https://eloitanguy.github.io/assets/pdf/constrained_maps_slides.pdf)
+  *Online matching with budget refills*
+  [slides](https://www.cirm-math.fr/RepOrga/2879/Slides/Cherifa_CIRM.pdf)
 
-- 30/01/2025 Université de Haute-Alsace, [ANR
-  SOCOT](https://codimd.math.cnrs.fr/s/vKWD_JtAu#), 
-  
-  *Computing Barycenters of
-  Measures for Generic Transport Costs*
-  [slides](https://eloitanguy.github.io/assets/pdf/ot_bar_slides.pdf)
+- 28/09/2023 ENSAE, Séminaire de l'équipe Fairplay, 
 
-- 20/01/2025 MAP5, Séminaire des Doctorants, 
-
-  *Computing Barycenters of Measures
-  for Generic Transport Costs*
-  [slides](https://eloitanguy.github.io/assets/pdf/ot_bar_slides.pdf)
-
-- 17/06/2024 [GT-OT-EDP-ML](https://lucanenna.github.io/gdt/gdtot/), LMO
-  
-  *Properties of Discrete Sliced Wasserstein Losses*
-  [slides](https://eloitanguy.github.io/assets/pdf/slicedloss_slides.pdf)
-
-- 27/05/2024 [CANUM
-  2024](https://canum2024.math.cnrs.fr/en/programme/minisymposia/), 
-  
-  *Properties
-  of Discrete Sliced Wasserstein Losses*
-  [slides](https://eloitanguy.github.io/assets/pdf/slicedloss_slides.pdf)
-
-- 21/05/2024 [Imaging in Paris](https://imaging-in-paris.github.io), IHP,
-  
-  *Properties of Discrete Sliced Wasserstein Losses*
-  [slides](https://eloitanguy.github.io/assets/pdf/slicedloss_slides.pdf)
-
-- 31/01/2024 Semaine de lancement [ANR
-  SOCOT](https://codimd.math.cnrs.fr/s/vKWD_JtAu#), 
-  
-  *Properties of Discrete
-  Sliced Wasserstein Losses*
-  [slides](https://eloitanguy.github.io/assets/pdf/slicedloss_slides.pdf)
-
-- 26/01/2024 MAP5, Séminaire des Doctorants, 
-
-  *An Introduction to Reproducing
-  Kernel Hilbert Spaces and Kernel Interpolation*
-
-- 23/01/2024 Lancement [PEPR-PDE-IA](https://pde-ai.math.cnrs.fr/page/events/),
-  LJLL, Jussieu, 
-  
-  *Properties of Discrete Sliced Wasserstein Losses*
-  [slides](https://eloitanguy.github.io/assets/pdf/slicedloss_slides.pdf)
-
-- 26/09/2023 [CJCMA 2023](https://cjcma2023.sciencesconf.org/), CentraleSupélec,
-  
-  *Properties of Discrete Sliced Wasserstein Losses*
-  [slides](https://eloitanguy.github.io/assets/pdf/slicedloss_slides.pdf)
-
-- 06/07/2023 [54e Journées de Statistique de la
-  SFdS](https://jds2023.sciencesconf.org/?lang=fr), Université Libre de
-  Bruxelles, 
-  
-  *Properties of Discrete Sliced Wasserstein Losses*
-  [slides](https://eloitanguy.github.io/assets/pdf/slicedloss_slides.pdf)
-
-- 30/06/2023 MAP5, Séminaire des Doctorants, 
-
-  *Properties of Discrete Sliced
-  Wasserstein Losses*
-  [slides](https://eloitanguy.github.io/assets/pdf/slicedloss_slides.pdf)
-
-- 28/02/2022 MAP5, Séminaire des Doctorants, 
-
-  *Generalised Wasserstein
-  Barycenters and the Sliced Wasserstein Distance*
+  *Dynamic online matching with budget refills*

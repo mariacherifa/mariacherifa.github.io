@@ -7,42 +7,24 @@ nav: true
 nav_order: 5
 ---
 
-### Master MVA
-
-Project supervisor for the [Imaging](https://perso.telecom-paristech.fr/gousseau/MVA/) and [Generative Modelling](https://generativemodelingmva.github.io/) courses.
-
 ### Université Paris-Cité
 
-#### MC2 2023-2024
+#### Introduction aux statistiques 2024-2025 
 
-Chargé de TD Maths et Calcul 2  (TD numéro 2, License 1 Maths-Info): [Moodle](https://moodle.u-paris.fr/course/view.php?id=2354).
+Chargé de TD  (License 2 Maths): [Moodle](https://moodle.u-paris.fr/course/view.php?id=2377).
 
-Fiche de rédaction pour les changements de variables [pdf](https://eloitanguy.github.io/assets/pdf/MC2_cdv.pdf)
+#### MC2 2024-2025
 
-Corrections d'interrogations:
-
-- Algèbre Linéaire et Déterminants: [pdf](https://eloitanguy.github.io/assets/pdf/MC2_2024_TD2_interro1.pdf)
-
-- Calcul de Primitives et Intégrales Impropres [pdf](https://eloitanguy.github.io/assets/pdf/MC2_2024_TD2_interro3.pdf)
-
-#### MC2 2022-2023
-
-Chargé de TD Maths et Calcul 2 (License 1 Maths-Info): [Moodle](https://moodle.u-paris.fr/course/view.php?id=2354).
+Chargé de TD Maths et Calcul 2  (TD numéro 9, License 1 Maths-Info): [Moodle](https://moodle.u-paris.fr/course/view.php?id=2354).
 
 Corrections d'interrogations:
 
-- Géométrie et Déterminants (Merci Guillaume Sérieys): [pdf](https://eloitanguy.github.io/assets/pdf/MC2_interro1.pdf)
+- Déterminants et Calcul de Primitives: [pdf](https://eloitanguy.github.io/assets/pdf/MC2_2024_TD2_interro1.pdf)
 
-- Intégrales et primitives: [pdf](https://eloitanguy.github.io/assets/pdf/MC2_interro2.pdf)
+#### Probabilités 5 2024-2025 
 
-- Intégrales Impropres (Merci Guillaume Sérieys) [pdf](https://eloitanguy.github.io/assets/pdf/MC2_interro3.pdf)
+Chargé de TD  (License 3 Maths): [Moodle](https://moodle.u-paris.fr/course/view.php?id=2404).
 
-- Séries Numériques: [pdf](https://eloitanguy.github.io/assets/pdf/MC2_interro4.pdf)
+### ENSAE Paris
 
-#### MC1 2022-2023 et 2023-2024
-
-Chargé de TD Maths et Calcul 1 (License 1 Maths-Info): [Moodle](https://moodle.u-paris.fr/course/view.php?id=2351).
-
-### Institut de Technologie du Cambodge
-
-2018-2019: TA teaching gifted undergrad students full-time for the preparation of the entry exam to Ecole Polytechnique: [course notes](https://eloitanguy.github.io/assets/pdf/prep_class.pdf).
+2023-2024: Membre du jury de stage des élèves en deuxième année.
