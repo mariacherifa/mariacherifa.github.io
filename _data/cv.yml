@@ -33,26 +33,26 @@
         - Statistics
     
     - title: Master Degree 1
-      institution: Université Paris Cité 
+      institution: Université Paris Cité
       year: 2019 - 2020
       description:
-        - Statistics/ Probabilities.
-        - Information Theory.
-        - Temporal series.
+        - Statistics/ Probabilities
+        - Information Theory
+        - Temporal series
         - Distributions
-        -PDE/ODE
+        - PDE/ODE
 
     - title: Bachelor Degree 
-      institution: Université Paris Saclay 
+      institution: Université Paris Saclay
       year: 2018 - 2019
       description:
-        - Electrical Engineering and computer science.
+        - Electrical Engineering and computer science
 
-     - title: Bachelor Degree 
-      institution: Université Paris Saclay 
+    - title: Bachelor Degree 
+      institution: Université Paris Saclay
       year: 2017 - 2018
       description:
-        - Applied and Pure mathematics.
+        - Applied and Pure mathematics
 
 - title: Experience
   type: time_table
@@ -60,10 +60,11 @@
     - title: A.T.E.R.
       institution: Université Paris Cité
       year: 2025-Now
-      description: Attaché Temporaire d’Enseignement et de Recherche en Mathématiques.
-        - title: Teaching assistant in Statistics for Licence 2 students. 
-        - title: Teaching assistant in Math and Calculus for Licence 1 students.
-        - title: Teaching assistant in Probabilities for Licence 3 students.
+      description:
+        - title: Attaché Temporaire d’Enseignement et de Recherche en Mathématiques
+        - title: Teaching assistant in Statistics for Licence 2 students
+        - title: Teaching assistant in Math and Calculus for Licence 1 students
+        - title: Teaching assistant in Probabilities for Licence 3 students
 
     - title: Research Internship
       institution: Criteo AI Lab
@@ -82,21 +83,20 @@
             - Nicolas Vayatis (Professor at ENS Paris Saclay)
 
     - title: Research Internship
-      institution: Laboratoire des signaux et systèmes L2S, Central Supélec.
+      institution: Laboratoire des signaux et systèmes L2S, Central Supélec
       year: 2018
-      description: designing an algorithm for inverse text recognition using recurrent neural networks.
-    - title: Under the supervision of
+      description: designing an algorithm for inverse text recognition using recurrent neural networks
+        - title: Under the supervision of
           contents:
             - Samson Lasaulce (Chief Research Scientist at Khalifa University)
     
     - title: Research Internship
-      institution: Laboratoire des signaux et systèmes L2S, Central Supélec.
+      institution: Laboratoire des signaux et systèmes L2S, Central Supélec
       year: 2018
-      description: Alzeihmer disease prediction from patients records.
-    - title: Under the supervision of
+      description: Alzheimer disease prediction from patients' records
+        - title: Under the supervision of
           contents:
             - Arthur Tenenhaus (Professor at Central Supélec)
-       
 
 - title: Other Interests
   type: list
