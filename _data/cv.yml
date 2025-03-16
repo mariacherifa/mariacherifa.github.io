@@ -15,43 +15,43 @@
       institution: CREST (ENSAE)/Criteo/ Université Paris-Cité, laboratoire MAP5
       year: 2022 - now
       description:
-        - Online matching on bipartite graphs
-        - Online learning
-        - Bandit algorithms
+        - Online matching on bipartite graphs.
+        - Online learning.
+        - Bandit algorithms.
         - title: Under the supervision of
           contents:
-            - Vianney Perchet (Professeur at ENSAE)
-            - Clément Calauzènes (Engineering manager at Criteo)
+            - Vianney Perchet (Professeur at ENSAE).
+            - Clément Calauzènes (Engineering manager at Criteo).
     
-    - title: Masters Degree
+    - title: Masters Degree 2
       institution: Mathematics, Vision and Learning ("Master MVA"), ENS Paris-Saclay
       year: 2020-2021
       description:
-        - Deep Learning (Vision, NLP, Graphs)
-        - Optimal Transport
-        - Optimisation
-        - Statistics
+        - Deep Learning (Vision, NLP, Graphs).
+        - Optimal Transport.
+        - Optimisation.
+        - Statistics.
     
     - title: Master Degree 1
       institution: Université Paris Cité
       year: 2019 - 2020
       description:
-        - Statistics/Probabilities
-        - Information Theory
-        - Temporal series
-        - PDE/ODE
+        - Statistics/Probabilities.
+        - Information Theory.
+        - Temporal series.
+        - PDE/ODE.
 
     - title: Bachelor Degree 
       institution: Université Paris Saclay
       year: 2018 - 2019
       description:
-        - Electrical engineering and computer science 
+        - Electrical engineering and computer science. 
 
     - title: Bachelor Degree 
       institution: Université Paris Saclay
       year: 2017 - 2018
       description:
-        - Applied and pure mathematics  
+        - Applied and pure mathematics.  
         
 - title: Experience
   type: time_table
@@ -59,71 +59,51 @@
     - title: A.T.E.R
       year: 2025 - now
       description: 
-        - Attachée à l'enseignement et la recherche
-        - title : Teaching assistant 
-          contents:
-            - Introduction to statistics for Licence 2 students
-            - Math and calculus for Licence 1 students
-            - Probabilities for Licence 3 students
-    - title: Co-organiser of the PhD Student Seminar at MAP5
-      year: 2023 - 2024
+        - Attachée à l'enseignement et la recherche.
+        - Teaching Assistant – Introduction to Statistics, Licence 2 students.
+        - Teaching Assistant – Math and Calculus , Licence 1 students.
+        - Teaching Assistant – Probabilities , Licence 3 students.
+        
     - title: Research Internship
-      institution: MAP5, Université Paris-Cité
-      year: 2022
-      description:
-        - Generalised Wasserstein Barycentres and the Sliced Wasserstein Distance.
-        - title: Under the supervision of
-          contents:
-            - Julie Delon (Professeur des Universités, sMAP 5, Université Paris Cité)
-            - Rémi Flamary (Tenure Professor at CMAP, Ecole Polytechnique)
-    
-    - title: Research Internship
-      institution: DIG-INFRES, Télécom Paris
+      institution: Criteo AI Lab
       year: 2021
       description:
-        - Extracting structured information from raw Wikipedia text using Deep Learning.
+        - Theoritical analysis of Meta pseudo labels.
         - title: Under the supervision of
           contents:
-            - Tiphaine Viard (Associate Professor at DIG, Télécom Paris)
-            - Thomas Bonald (Tenure Professor at DIG, Télécom Paris)
-
-    - title: Company Internship
-      institution: Stereolabs
+            - Jérémie Mary (Researcher at Criteo)
+    
+    - title: Research Internship
+      institution: Centre Borelli - ENS Paris Saclay
       year: 2020
       description:
-        - Human pose estimation with CNNs.
+        - Study of SEIR model to control the propagation of Covid-19.
+        - title: Under the supervision of
+          contents:
+            - Nicolas Vayatis (Professor at ENS Paris Saclay)
 
-    - title: Teaching Assistant
-      institution: Université de Technologie du Cambodge
-      year: 2018
+    - title: Research Internship 
+      institution: Laboratoire des signaux et systèmes - Central Supelec
+      year: 2019
       description:
-        - Teaching full-time gifted undergraduate students as preparation for the Ecole Polytechnique entry exams.
+        - Designing an algorithm for inverse text recognition
+        - title: Under the supervision of 
+          contents:
+            - Samson Lasaulce (Chief research scientist at Khalifa University).
 
-- title: Open Source Projects
-  type: time_table
-  contents:
-    - title: <a href="https://github.com/PythonOT">POT</a>
-      year: 2022-now
-      description: Contributing to the Python Optimal Transport Library.
-
-- title: Academic Interests
-  type: nested_list
-  contents:
-    - title: Optimal Transport
-      items: 
-        - (Generalised) Wasserstein Barycentres
-        - The Sliced Wasserstein Distance
-        - Gaussian Mixture Model Optimal Transport
-    - title: Signal Processing
-      items:
-        - Graph (Laplacian) Learning
-        - Graph Signal Processing
+    - title: Research Internship
+      institution: Laboratoire des signaux et systèmes - Central Supelec
+      year: 2019
+      description:
+        - Alzheimer disease predition from patients records 
+        - title: Under the supervision of 
+          contents:
+            - Arthur Tenenhaus (Professor at Central Supelec)
 
 - title: Other Interests
   type: list
   contents:
-    - Mandarin Chinese
-    - Music (flute, saxophone)
-    - (Horrendous) chess
-    - Blender modelling and animation
-    - Tennis
+    - Politics / History.
+    - Volunteering and humanitarian initiatives.
+    - Travel. 
+    - Tennis.
