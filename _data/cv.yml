@@ -56,9 +56,15 @@
 - title: Experience
   type: time_table
   contents:
-    - title: Member of the Board of the <a href="https://www.sfds.asso.fr/fr/jeunes_statisticiens/468-les_jeunes_statisticiens/">Young Statisticians Group of the French Statistical Society</a>
-      year: 2023 - now
-      description: Organising research events, Webmaster
+    - title: A.T.E.R
+      year: 2025 - now
+      description: 
+        - Attachée à l'enseignement et la recherche
+        - title : Teaching assistant 
+          contents:
+            - Introduction to statistics for Licence 2 students
+            - Math and calculus for Licence 1 students
+            - Probabilities for Licence 3 students
     - title: Co-organiser of the PhD Student Seminar at MAP5
       year: 2023 - 2024
     - title: Research Internship
