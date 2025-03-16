@@ -2,33 +2,30 @@
   type: map
   contents:
     - name: Full Name
-      value: Eloi Tanguy
-    - name: Date of Birth
-      value: 15th August 1999
+      value: Maria Cherifa 
     - name: Languages
-      value: English, French, Spanish, <small> Mandarin Chinese </small>
+      value: English, French, Arabic
     - name: Contact
-      value: eloi.tanguy 'at' math.cnrs 'dot' fr
+      value: cherifamaria 'at' gmail 'dot' com
 
 - title: Education
   type: time_table
   contents:
-    - title: PhD
-      institution: Université Paris-Cité, laboratoire MAP5
+    - title: PhD/ATER
+      institution: CREST (ENSAE)/Criteo/ Université Paris-Cité, laboratoire MAP5
       year: 2022 - now
       description:
-        - Generalised Wasserstein Barycentres
-        - Sliced Wasserstein Distance
-        - Optimal Transport Maps
-        - Optimal Transport between Gaussian Mixture Models
+        - Online matching on bipartite graphs
+        - Online learning
+        - Bandit algorithms
         - title: Under the supervision of
           contents:
-            - Julie Delon (Professeur des Universités, MAP 5, Université Paris Cité)
-            - Agnès Desolneux (Directrice de Recherche CNRS at Centre Borelli and tenure Professor at ENS Paris-Saclay)
+            - Vianney Perchet (Professeur at ENSAE)
+            - Clément Calauzènes (Engineering manager at Criteo)
     
     - title: Masters Degree
       institution: Mathematics, Vision and Learning ("Master MVA"), ENS Paris-Saclay
-      year: 2021
+      year: 2020-2021
       description:
         - Deep Learning (Vision, NLP, Graphs)
         - Optimal Transport
