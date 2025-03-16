@@ -2,110 +2,113 @@
   type: map
   contents:
     - name: Full Name
-      value: Eloi Tanguy
-    - name: Date of Birth
-      value: 15th August 1999
+      value: Maria Cherifa
     - name: Languages
-      value: English, French, Spanish, <small> Mandarin Chinese </small>
+      value: English, French, Arabic
     - name: Contact
-      value: eloi.tanguy 'at' math.cnrs 'dot' fr
+      value: cherifamaria 'at' gmail 'dot' com
 
 - title: Education
   type: time_table
   contents:
-    - title: PhD
-      institution: Université Paris-Cité, laboratoire MAP5
+    - title: PhD/ATER
+      institution: CREST (ENSAE)/ Criteo/ Université Paris Cité, laboratoire MAP5 
       year: 2022 - now
       description:
-        - Generalised Wasserstein Barycentres
-        - Sliced Wasserstein Distance
-        - Optimal Transport Maps
-        - Optimal Transport between Gaussian Mixture Models
+        - Online matching on bipartite graphs
+        - Online learning
+        - Bandit algorithms
         - title: Under the supervision of
           contents:
-            - Julie Delon (Professeur des Universités, MAP 5, Université Paris Cité)
-            - Agnès Desolneux (Directrice de Recherche CNRS at Centre Borelli and tenure Professor at ENS Paris-Saclay)
+            - Vianney Perchet (Professeur et ENSAE)
+            - Clément Calauzènes (Engineering manager at Criteo)
     
-    - title: Masters Degree
+    - title: Masters Degree 2
       institution: Mathematics, Vision and Learning ("Master MVA"), ENS Paris-Saclay
-      year: 2021
+      year: 2020-2021
       description:
         - Deep Learning (Vision, NLP, Graphs)
         - Optimal Transport
         - Optimisation
         - Statistics
     
-    - title: Ecole d'Ingénieur
-      institution: Ecole Polytechnique
-      year: 2018 - 2021
+    - title: Master Degree 1 
+      institution: Université Paris Cité
+      year: 2019 - 2020
       description:
-        - Specialisation in Pure and Applied Mathematics.
+        - Statistics/ Probabilities
+        - Information Theory
+        - Temporal series
+        - PDE/EDO
+
+     - title: Bachelor Degree
+      institution: Université Paris Saclay
+      year: 2018 - 2019
+      description:
+        - Electrical engineering and computer science
+
+      - title: Bachelor Degree 
+      institution: Université Paris Saclay
+      year: 2017 - 2018
+      description:
+        - Applied and Pure mathematics 
 
 - title: Experience
   type: time_table
   contents:
-    - title: Member of the Board of the <a href="https://www.sfds.asso.fr/fr/jeunes_statisticiens/468-les_jeunes_statisticiens/">Young Statisticians Group of the French Statistical Society</a>
-      year: 2023 - now
-      description: Organising research events, Webmaster
-    - title: Co-organiser of the PhD Student Seminar at MAP5
-      year: 2023 - 2024
-    - title: Research Internship
+    - title: A.T.E.R
       institution: MAP5, Université Paris-Cité
-      year: 2022
+      year: 2025-Now
       description:
-        - Generalised Wasserstein Barycentres and the Sliced Wasserstein Distance.
-        - title: Under the supervision of
+        - Attachée temporaire à l'enseignement et à la recherche 
+        - title: Teaching assistant
           contents:
-            - Julie Delon (Professeur des Universités, sMAP 5, Université Paris Cité)
-            - Rémi Flamary (Tenure Professor at CMAP, Ecole Polytechnique)
+            - Introduction to statistics for Licence 2 students
+            - Math and calculus for Licence 1 students
+            - Probabilities for Licence 3 students
     
     - title: Research Internship
-      institution: DIG-INFRES, Télécom Paris
+      institution: Criteo AI Lab
       year: 2021
       description:
-        - Extracting structured information from raw Wikipedia text using Deep Learning.
+        - Theoritical analysis of Meta pseudo Labels
         - title: Under the supervision of
           contents:
-            - Tiphaine Viard (Associate Professor at DIG, Télécom Paris)
-            - Thomas Bonald (Tenure Professor at DIG, Télécom Paris)
-
-    - title: Company Internship
-      institution: Stereolabs
+            - Jérémie Mary (Researcher at Criteo)
+          
+    - title: Research Internship 
+      institution: Centre Borelli - ENS Paris Saclay
       year: 2020
-      description:
-        - Human pose estimation with CNNs.
+      description: 
+        - Study of an SEIR model to control the propagation of Covid-19
+        - title: Under the supervision of
+          contents:
+            - Nicolas Vayatis (Professor at ENS Paris Saclay)
 
-    - title: Teaching Assistant
-      institution: Université de Technologie du Cambodge
-      year: 2018
-      description:
-        - Teaching full-time gifted undergraduate students as preparation for the Ecole Polytechnique entry exams.
+    - title: Research Internship 
+      institution: Laboratoire des signaux et systèmes - Central Supelec
+      year: 2019
+      description: 
+        - Designing an algorithm for inverse text recognition 
+        - title: Under the supervision of
+          contents:
+            - Samson Lasaulce (Chief research scientist at Khalifa University)
 
-- title: Open Source Projects
-  type: time_table
-  contents:
-    - title: <a href="https://github.com/PythonOT">POT</a>
-      year: 2022-now
-      description: Contributing to the Python Optimal Transport Library.
+    - title: Research Internship 
+      institution: Laboratoire des signaux et systèmes - Central Supelec
+      year: 2019
+      description: 
+        - Alzheimer Disease prediction from patient's records
+        - title: Under the supervision of
+          contents:
+            - Arthur Tenenhaus (Professor at Central Supelec)
+      
 
-- title: Academic Interests
-  type: nested_list
-  contents:
-    - title: Optimal Transport
-      items: 
-        - (Generalised) Wasserstein Barycentres
-        - The Sliced Wasserstein Distance
-        - Gaussian Mixture Model Optimal Transport
-    - title: Signal Processing
-      items:
-        - Graph (Laplacian) Learning
-        - Graph Signal Processing
+    
 
 - title: Other Interests
   type: list
   contents:
-    - Mandarin Chinese
-    - Music (flute, saxophone)
-    - (Horrendous) chess
-    - Blender modelling and animation
+    - Politics / History
+    - Travel
     - Tennis
