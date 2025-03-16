@@ -57,16 +57,17 @@
 - title: Experience
   type: time_table
   contents:
-
-    - title: A.T.E.R.
-      institution: Université Paris Cité
-      year: 2025-Now
-      description: Attaché Temporaire d’Enseignement et de Recherche en Mathématiques
-      details:
-        - Teaching assistant in Statistics for Licence 2 students
-        - Teaching assistant in Math and Calculus for Licence 1 students
-        - Teaching assistant in Probabilities for Licence 3 students
-
+   - title: A.T.E.R
+      institution: MAP5, Université Paris-Cité
+      year: 2025- Now
+      description:
+        -  Attaché Temporaire d’Enseignement et de Recherche en Mathématiques
+        -  title: Teaching assistant 
+          contents:
+            - Introduction to statistics for Licence 2 students
+            - Math and Calculus for Licence 1 students
+            - Probabilities for Licence 3 students
+    
     - title: Research Internship
       institution: Criteo AI Lab
       year: 2021
