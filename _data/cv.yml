@@ -57,11 +57,12 @@
 - title: Experience
   type: time_table
   contents:
+
     - title: A.T.E.R.
       institution: Université Paris Cité
       year: 2025-Now
-      description:
-        - title: Attaché Temporaire d’Enseignement et de Recherche en Mathématiques
+      description: attaché Temporaire d’Enseignement et de Recherche en Mathématiques
+      details:
         - title: Teaching assistant in Statistics for Licence 2 students
         - title: Teaching assistant in Math and Calculus for Licence 1 students
         - title: Teaching assistant in Probabilities for Licence 3 students
