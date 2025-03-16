@@ -32,12 +32,27 @@
         - Optimisation
         - Statistics
     
-    - title: Ecole d'Ingénieur
-      institution: Ecole Polytechnique
-      year: 2018 - 2021
+    - title: Master Degree 1
+      institution: Université Paris Cité
+      year: 2019 - 2020
       description:
-        - Specialisation in Pure and Applied Mathematics.
+        - Statistics/Probabilities
+        - Information Theory
+        - Temporal series
+        - PDE/ODE
 
+    - title: Bachelor Degree 
+      institution: Université Paris Saclay
+      year: 2018 - 2019
+      description:
+        - Electrical engineering and computer science 
+
+    - title: Bachelor Degree 
+      institution: Université Paris Saclay
+      year: 2017 - 2018
+      description:
+        - Applied and pure mathematics  
+        
 - title: Experience
   type: time_table
   contents:
