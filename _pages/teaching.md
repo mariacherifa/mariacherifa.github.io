@@ -19,9 +19,9 @@ Chargé de TD Maths et Calcul 2  (TD numéro 9, License 1 Maths-Info): [Moodle](
 
 Corrections d'interrogations:
 
-- Déterminants et Calcul de Primitives: [pdf](https://github.com/mariacherifa/mariacherifa.github.io/blob/master/assets/pdf/Interro2_MC2.pdf)
+- Déterminants et Calcul de Primitives: [pdf](https://mariacherifa.github.io/assets/pdf/Interro2_MC2.pdf)
 
-- Calcul de Primitives et Intégrales Impropres [pdf](https://github.com/mariacherifa/mariacherifa.github.io/blob/master/assets/pdf/Interro3_MC2.pdf)
+- Calcul de Primitives et Intégrales Impropres [pdf](https://mariacherifa.github.io/assets/pdf/Interro3_MC2.pdf)
 
 
 #### Probabilités 5 2024-2025 
