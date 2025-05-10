@@ -23,6 +23,8 @@ Corrections d'interrogations:
 
 - Calcul de Primitives et Intégrales Impropres [pdf](https://mariacherifa.github.io/assets/pdf/Interro3_MC2.pdf)
 
+- Séries numériques et équations différentielles ordinaires [pdf](https://mariacherifa.github.io/assets/pdf/Interro4_MC2.pdf)
+
 
 #### Probabilités 5 2024-2025 
 
