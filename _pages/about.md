@@ -18,4 +18,4 @@ social: true  # includes social icons at the bottom of the page
 
 I am a third-year Ph.D. Student at ENSAE-CREST and Criteo AI Lab and ATER at University Paris Cité, under the supervision of [Vianney Perchet](https://www.ensae.fr/faculty/670-vianney-perchet) and [Clément Calauzènes](https://scholar.google.ca/citations?user=lFsKnyUAAAAJ&hl=en). My research focuses on online matching in bipartite graphs. Before my PhD, I graduated from the [master MVA (ENS Paris Saclay)](https://www.master-mva.com) in 2021, with a major in machine learning.
 
-{% include news.html %}
+
