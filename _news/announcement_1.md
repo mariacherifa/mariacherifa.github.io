@@ -4,4 +4,4 @@ date: 2025-12-11 14:00:00-0400
 inline: true
 ---
 
-I will defend my thesis on 11 December 2025 at 2:00 PM (Paris time). You can find the manuscript [here](https://mariacherifa.github.io/assets/pdf/manuscript.pdf), along with the Zoom link to follow the defense if you wish [Zoom](https://universite-paris-saclay-fr.zoom.us/j/95911438008?pwd=eWDaMWVlmZ760XZ9HzhhyVfdeBGU6f.1)
+I successfully defended my thesis on 11 December 2025. You can find the manuscript [here](https://mariacherifa.github.io/assets/pdf/manuscript.pdf), along with the [slides](https://mariacherifa.github.io/assets/pdf/slides_thesis.pdf).
