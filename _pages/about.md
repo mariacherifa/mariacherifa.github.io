@@ -8,8 +8,8 @@ profile:
   image: IMG_3747.jpg
   image_circular: false # crops the image to make it circular
   address: >
-    <p>725C1, MAP5, Université Paris-Cité</p>
-    <p>45, rue des Saints Pères, 75270 Paris Cedex 06, FRANCE</p>
+    <p>2N6, LMO, Université Paris-Saclay</p>
+    <p>Bâtiment 307, rue Michel Magat, 91405 Orsay Cedex, FRANCE</p>
 
 news: true  
 selected_papers: false # includes a list of papers marked as "selected={true}"
