@@ -6,6 +6,23 @@ description: #Materials for courses you taught. Replace this text with your desc
 nav: true
 nav_order: 5
 ---
+### Université Paris-Saclay
+
+#### Probabilités avancées 2025-2026 
+
+Chargé de TD  (License 3 Math-physique): [L3](https://www.universite-paris-saclay.fr/formation/licence-double-diplome/mathematiques-physique-et-sciences-pour-lingenieur/ldd3-mathematiques-physique#edit-group-presentation). 
+
+#### Algèbre 2025-2026
+Chargé de TD  (License 2 physique): [L2](https://www.universite-paris-saclay.fr/formation/licence/physique/l2-physique-0). 
+
+#### Modélisation mathématiques 2025-2026
+
+Chargé de TD  (License 1 biologie): [L1](https://ecole-universitaire-paris-saclay.fr/formation/licence/sciences-de-la-vie/l1-portail-biologie-chimie-sciences-de-la-terre-bcst).
+
+#### Analyse  2025-2026
+
+Chargé de TD  (cursus ingénieur polytech): [ET3](https://www.polytech.universite-paris-saclay.fr/formation/informatique-et-ingenierie-mathematique).
+
 
 ### Université Paris-Cité
 
