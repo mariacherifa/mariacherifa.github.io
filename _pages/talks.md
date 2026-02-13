@@ -6,6 +6,16 @@ description: #Materials for courses you taught. Replace this text with your desc
 nav: true
 nav_order: 6
 ---
+- 13/02/2026 [Statistics Seminar of MAP5 Lab](https://map5.mi.parisdescartes.fr/events/maria-cherifa-2/), MAP5, Paris, France.
+
+*Dynamics and learning in online allocation problems*
+[slides](https://mariacherifa.github.io/assets/pdf/map5_pres.pdf)
+
+- 11/12/2025 [PhD defense](https://theses.fr/s351895?domaine=theses), ENSAE, Palaiseau, France.
+
+*Dynamics and learning in online allocation problems*
+[slides](https://mariacherifa.github.io/assets/pdf/slides_thesis.pdf)
+
 - 12/12/2024 [Conference on Neural Information Processing Systems Neurips](https://neurips.cc/Conferences/2024),Virtual.
 
 *Optimizing the coalition gain in Online Auctions with Greedy Structured
