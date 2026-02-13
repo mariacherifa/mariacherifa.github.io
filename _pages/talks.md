@@ -22,7 +22,7 @@ nav_order: 6
 Bandits*
 [slides](https://mariacherifa.github.io/assets/pdf/mamab_pres.pdf)
 
-- 10/09/2024 [International Workshop on Matching Under Preferences](https://www.dcs.gla.ac.uk/research/algorithms/MATCHUP2024/),Oxford England, 
+- 10/09/2024 [International Workshop on Matching Under Preferences](https://www.dcs.gla.ac.uk/research/algorithms/MATCHUP2024/),Oxford, England. 
   
   *Dynamic online matching with budget refills*
   [slides](https://www.dcs.gla.ac.uk/research/algorithms/MATCHUP2024/CHERIFA.pdf)
@@ -32,11 +32,11 @@ Bandits*
   *Optimizing the coalition gain in Online Auctions with Greedy Structured
 Bandits*
  
-- 23/12/2023 [From matchings to markets. A tale of Mathematics, Economics and Computer Science conference](https://conferences.cirm-math.fr/2879.html),CIRM Marseille, 
+- 23/12/2023 [From matchings to markets. A tale of Mathematics, Economics and Computer Science conference](https://conferences.cirm-math.fr/2879.html),CIRM, Marseille, 
   
   *Online matching with budget refills*
   [slides](https://www.cirm-math.fr/RepOrga/2879/Slides/Cherifa_CIRM.pdf)
 
-- 28/09/2023 ENSAE, Séminaire de l'équipe Fairplay, 
+- 28/09/2023 ENSAE, Séminaire de l'équipe Fairplay. 
 
   *Dynamic online matching with budget refills*
