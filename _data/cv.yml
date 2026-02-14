@@ -2,7 +2,7 @@
   type: map
   contents:
     - name: Full Name
-      value: Maria Cherifa 
+      value: Maria Cherifa
     - name: Languages
       value: English, French, Arabic
     - name: Contact
@@ -11,15 +11,15 @@
 - title: Education
   type: time_table
   contents:
-  - title: Research and teaching assistant 
+    - title: Research and Teaching Assistant
       institution: Paris-Saclay University, IMO Lab
-      year: 2025 - Now
+      year: 2025 - Present
       description:
-        - Research: Online matching on bipartite graphs, Online learning. 
-        - Teaching: probability/ statistics/ linear algebra/ Ordinary Differential Equations analysis/ calculus.
-      
-    - title: PhD/ATER
-      institution: CREST (ENSAE)/Criteo/ Paris-Cité University, MAP5 Lab.
+        - Research: Online matching on bipartite graphs, online learning.
+        - Teaching: Probability, Statistics, Linear Algebra, Ordinary Differential Equations, Calculus.
+
+    - title: PhD / ATER
+      institution: CREST (ENSAE) / Criteo / Paris-Cité University, MAP5 Lab
       year: 2022 - 2025
       description:
         - Online matching on bipartite graphs.
@@ -27,92 +27,88 @@
         - Bandit algorithms.
         - title: Under the supervision of
           contents:
-            - Vianney Perchet (Professeur at ENSAE).
-            - Clément Calauzènes (Engineering manager at Criteo). 
-    
-    - title: Masters Degree 2
-      institution: Mathematics, Vision and Learning ("Master MVA"), ENS Paris-Saclay
-      year: 2020-2021
+            - Vianney Perchet (Professor at ENSAE)
+            - Clément Calauzènes (Engineering Manager at Criteo)
+
+    - title: Master’s Degree (M2) – Mathematics, Vision and Learning (MVA)
+      institution: ENS Paris-Saclay
+      year: 2020 - 2021
       description:
-        - Deep Learning (Vision, NLP, Graphs).
-        - Optimal Transport.
-        - Optimisation.
-        - Statistics.
-    
-    - title: Master Degree 1
+        - Deep Learning (Vision, NLP, Graphs)
+        - Optimal Transport
+        - Optimization
+        - Statistics
+
+    - title: Master’s Degree (M1)
       institution: Paris Cité University
       year: 2019 - 2020
       description:
-        - Statistics/Probabilities.
-        - Information Theory.
-        - Temporal series.
-        - PDE/ODE.
+        - Statistics and Probability
+        - Information Theory
+        - Time Series
+        - PDE / ODE
 
-    - title: Bachelor Degree 
-      institution: Paris Saclay University
+    - title: Bachelor’s Degree – Electrical Engineering and Computer Science
+      institution: Paris-Saclay University
       year: 2018 - 2019
-      description:
-        - Electrical engineering and computer science. 
 
-    - title: Bachelor Degree 
-      institution: Paris Saclay University
+    - title: Bachelor’s Degree – Applied and Pure Mathematics
+      institution: Paris-Saclay University
       year: 2017 - 2018
-      description:
-        - Applied and pure mathematics.  
-        
+
 - title: Experience
   type: time_table
   contents:
-    - title: Research and teaching assistant
-      year: 2025 - now
-      description: 
-        - Research: Online matching on bipartite graphs, online learning. 
-        - Teaching Assistant – Introduction to Statistics, Licence 2 students.
-        - Teaching Assistant – Math and Calculus , Licence 1 students.
-        - Teaching Assistant – Probabilities , Licence 3 students.
-        - Teaching Assistant – Linear algebra , Licence 2 students.
-        - Teaching Assistant – Ordinary Differential Equations (ODEs), first-year engineering students.
-        
+    - title: Research and Teaching Assistant
+      year: 2025 - Present
+      description:
+        - Research: Online matching on bipartite graphs, online learning.
+        - Teaching Assistant – Introduction to Statistics (L2)
+        - Teaching Assistant – Mathematics and Calculus (L1)
+        - Teaching Assistant – Probability (L3)
+        - Teaching Assistant – Linear Algebra (L2)
+        - Teaching Assistant – Ordinary Differential Equations (ODEs), first-year engineering students
+
     - title: Research Internship
       institution: Criteo AI Lab
       year: 2021
       description:
-        - Theoritical analysis of Meta pseudo labels.
+        - Theoretical analysis of meta pseudo-labels
         - title: Under the supervision of
           contents:
             - Jérémie Mary (Researcher at Criteo)
-    
+
     - title: Research Internship
-      institution: Centre Borelli - ENS Paris Saclay
+      institution: Centre Borelli – ENS Paris-Saclay
       year: 2020
       description:
-        - Study of SEIR model to control the propagation of Covid-19.
+        - Study of SEIR models to control the propagation of COVID-19
         - title: Under the supervision of
           contents:
-            - Nicolas Vayatis (Professor at ENS Paris Saclay)
+            - Nicolas Vayatis (Professor at ENS Paris-Saclay)
 
-    - title: Research Internship 
-      institution: Laboratoire des signaux et systèmes - Central Supelec
+    - title: Research Internship
+      institution: Laboratoire des Signaux et Systèmes – CentraleSupélec
       year: 2019
       description:
         - Designing an algorithm for inverse text recognition
-        - title: Under the supervision of 
+        - title: Under the supervision of
           contents:
-            - Samson Lasaulce (Chief research scientist at Khalifa University)
+            - Samson Lasaulce (Chief Research Scientist at Khalifa University)
 
     - title: Research Internship
-      institution: Laboratoire des signaux et systèmes - Central Supelec
+      institution: Laboratoire des Signaux et Systèmes – CentraleSupélec
       year: 2019
       description:
-        - Alzheimer disease predition from patients records 
-        - title: Under the supervision of 
+        - Alzheimer’s disease prediction from patient records
+        - title: Under the supervision of
           contents:
-            - Arthur Tenenhaus (Professor at Central Supelec)
+            - Arthur Tenenhaus (Professor at CentraleSupélec)
 
 - title: Other Interests
   type: list
   contents:
-    - Politics / History.
-    - Volunteering and humanitarian initiatives.
-    - Travel. 
-    - Tennis.
+    - Politics and History
+    - Volunteering and humanitarian initiatives
+    - Travel
+    - Tennis
