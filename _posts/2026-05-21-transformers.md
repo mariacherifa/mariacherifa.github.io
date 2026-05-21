@@ -52,7 +52,7 @@ In other words, $x_t$ is not the token itself, but the index of a token in the v
 
 # From Tokens to Embeddings
 
-At this stage, a text is represented as a sequence of integers,$(x_1,\dots,x_T) \in \lbrace 1,\dots,V \rbrace^T$. Each integer $x_t$ identifies one token in the vocabulary. However, an integer index is not a very meaningful object for a neural network. For example, if the token `"cat"` has index $42$ and the token `"dog"` has index $43$, this does not mean that `"dog"` is mathematically larger than `"cat"` or that they are close simply because their indices are close. Therefore, we need to transform each discrete token index into a vector representation. This is the role of \textbf{the embedding layer}.
+At this stage, a text is represented as a sequence of integers, $(x_1,\dots,x_T) \in \lbrace 1,\dots,V \rbrace^T$. Each integer $x_t$ identifies one token in the vocabulary. However, an integer index is not a very meaningful object for a neural network. For example, if the token `"cat"` has index $42$ and the token `"dog"` has index $43$, this does not mean that `"dog"` is mathematically larger than `"cat"` or that they are close simply because their indices are close. Therefore, we need to transform each discrete token index into a vector representation. This is the role of **the embedding layer**.
 
 A first way to represent a token $x_t$ is through a one-hot vector. The one-hot vector associated with $x_t$ is denoted by $e_{x_t}$ and belongs to $\mathbb{R}^V$:
 
@@ -60,27 +60,81 @@ $$
 e_{x_t} = (0,\dots,0,1,0,\dots,0) \in \mathbb{R}^V.
 $$
 
-The only nonzero coordinate is the one corresponding to the index $x_t$. This representation is useful because it identifies each token uniquely. However, One-hot vectors are very high-dimensional, sparse, and do not encode semantic similarity between tokens. To obtain a dense and learnable representation, we introduce an embedding matrix,
+The only nonzero coordinate is the one corresponding to the index $x_t$. This representation is useful because it identifies each token uniquely. However, one-hot vectors are very high-dimensional, sparse, and do not encode semantic similarity between tokens. To obtain a dense and learnable representation, we introduce an embedding matrix
 
 $$
 E \in \mathbb{R}^{V \times d}.
 $$
 
-Each row of $E$ corresponds to one token in the vocabulary. $V$ is the vocabulary size, while $d$ is the embedding dimension. The vector representation of token $x_t$ is obtained by selecting the row of $E$ corresponding to $x_t$:
+Each row of $E$ corresponds to one token in the vocabulary. The integer $V$ is the vocabulary size, while $d$ is the embedding dimension. The vector representation of token $x_t$ is obtained by selecting the row of $E$ corresponding to $x_t$:
 
 $$
-h_t^{(0)} = e_{x_t}^{\top} E \in \mathbb{R}^d.
+z_t = e_{x_t}^{\top}E \in \mathbb{R}^d.
+$$
+
+Equivalently, $z_t$ is simply the row of $E$ associated with the token index $x_t$.
+
+At this point, $z_t$ contains information about the identity of the token. However, it does not contain information about the position of the token in the sequence. This is an important issue for Transformers. Unlike recurrent neural networks, Transformers process all tokens in parallel, so they do not naturally know whether a token appears at the beginning, in the middle, or at the end of the sentence.
+
+For example, the sentences `"the cat chased the dog"` and `"the dog chased the cat"` contain almost the same tokens, but their meanings are different because the order of the tokens is different. Therefore, we need to add positional information to the token embeddings.
+
+To do this, we introduce a positional embedding vector $p_t \in \mathbb{R}^d$ for each position $t$. The initial representation of token $x_t$ is then obtained by adding its token embedding and its positional embedding:
+
+$$
+h_t^{(0)} = z_t + p_t.
+$$
+
+Since both $z_t$ and $p_t$ belong to $\mathbb{R}^d$, their sum is also a vector in $\mathbb{R}^d$:
+
+$$
+h_t^{(0)} \in \mathbb{R}^d.
+$$
+
+In matrix form, if we define
+
+$$
+Z =
+\begin{pmatrix}
+z_1 \\
+z_2 \\
+\vdots \\
+z_T
+\end{pmatrix}
+\in \mathbb{R}^{T \times d}
+$$
+
+and
+
+$$
+P =
+\begin{pmatrix}
+p_1 \\
+p_2 \\
+\vdots \\
+p_T
+\end{pmatrix}
+\in \mathbb{R}^{T \times d},
+$$
+
+then the input matrix to the Transformer is
+
+$$
+H^{(0)} = Z + P \in \mathbb{R}^{T \times d}.
 $$
 
 The notation $h_t^{(0)}$ means the initial hidden representation of the token at position $t$. The superscript $(0)$ indicates that this vector is the input representation before applying any Transformer layer. After the first Transformer block, it will become $h_t^{(1)}$; after the second block, $h_t^{(2)}$; and so on.
 
-So the embedding layer maps each token index to a dense vector:
+So the embedding step maps each token and its position to a dense vector:
 
 $$
-x_t \longmapsto h_t^{(0)} \in \mathbb{R}^d.
+(x_t,t) \longmapsto h_t^{(0)} \in \mathbb{R}^d.
 $$
 
-The matrix $E$ is not chosen manually. It is a learnable parameter of the model. At the beginning of training, its entries are initialized randomly. During training, the model updates $E$ using gradient descent, so that tokens used in similar contexts tend to acquire useful vector representations. The dimension $d$ is a hyperparameter. It controls the size of the vector used to represent each token. A small value of $d$ gives a compact representation, but may not be expressive enough. A large value of $d$ allows the model to store richer information, but increases the number of parameters and the computational cost. In practice, $d$ is chosen depending on the size of the model, the amount of data, and the available computational resources.
+The matrix $E$ is not chosen manually. It is a learnable parameter of the model. At the beginning of training, its entries are initialized randomly. During training, the model updates $E$ using gradient descent, so that tokens used in similar contexts tend to acquire useful vector representations.
+
+The positional vectors $p_t$ can be defined in different ways. In some Transformers, they are also learned parameters, just like the token embeddings. In the original Transformer architecture, they were defined using sinusoidal functions, which gives the model a structured way to represent positions. In both cases, their role is the same: they inject information about the order of the tokens into the model.
+
+The dimension $d$ is a hyperparameter. It controls the size of the vector used to represent each token and each position. A small value of $d$ gives a compact representation, but may not be expressive enough. A large value of $d$ allows the model to store richer information, but increases the number of parameters and the computational cost. In practice, $d$ is chosen depending on the size of the model, the amount of data, and the available computational resources.
 
 # Self-Attention
 
