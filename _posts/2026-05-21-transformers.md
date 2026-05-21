@@ -400,15 +400,113 @@ Here, $\odot$ denotes coordinate-wise multiplication.
 
 The important point is that layer normalization is applied independently to each token representation. It normalizes the coordinates of a single hidden vector $h_t$, not the whole sequence at once. Intuitively, it keeps the representation numerically stable before passing it to the next part of the Transformer block.
 
-After self-attention and the residual connection, the output of this sublayer is therefore
+## The MLP Block
+
+After the self-attention sublayer, we obtain a contextual representation
+
+$$
+H_{\mathrm{attn}} =
+\mathrm{LayerNorm}
+\left(
+H + \widetilde{H}
+\right) \in \mathbb{R}^{T \times d}.
+$$
+
+Each row of this matrix now contains information from the whole sequence. In other words, the representation of token $x_t$ is no longer only based on $x_t$ itself, but also on the other tokens it attended to.
+
+However, self-attention mainly allows tokens to exchange information with each other. Once this contextual information has been collected, we still need to process it and transform it in **a richer way**. This is the role of the MLP block.
+
+The MLP is applied independently to each token representation. If
 
 $$
 H_{\mathrm{attn}}
 =
+\begin{pmatrix}
+h^{\mathrm{attn}}_1 \\
+h^{\mathrm{attn}}_2 \\
+\vdots \\
+h^{\mathrm{attn}}_T
+\end{pmatrix},
+$$
+
+then the same MLP is applied to every row $h^{\mathrm{attn}}_t$.
+
+A standard Transformer MLP has the form
+
+$$
+\mathrm{MLP}(h)
+=
+W_2 \, \phi(W_1 h + b_1) + b_2.
+$$
+
+Here,
+
+$$
+W_1 \in \mathbb{R}^{d_{\mathrm{ff}} \times d},
+\qquad
+b_1 \in \mathbb{R}^{d_{\mathrm{ff}}},
+$$
+
+and
+
+$$
+W_2 \in \mathbb{R}^{d \times d_{\mathrm{ff}}},
+\qquad
+b_2 \in \mathbb{R}^{d}.
+$$
+
+The dimension $d_{\mathrm{ff}}$ is usually larger than $d$. For example, in many Transformer architectures, one takes $d_{\mathrm{ff}} = 4d$. So the MLP first expands the representation to a higher-dimensional space, applies a nonlinearity, and then projects it back to dimension $d$.
+
+The function $\phi$ is a nonlinear activation function, such as ReLU or GELU. This nonlinearity is important because without it, the MLP would only be a linear transformation. The model would be much less expressive.
+
+So for each token $x_t$, we compute
+
+$$
+m_t
+=
+\mathrm{MLP}(h_t^{\mathrm{attn}}).
+$$
+
+In matrix form, this can be written as
+
+$$
+M
+=
+\mathrm{MLP}(H_{\mathrm{attn}}),
+$$
+
+where the MLP is applied row by row.
+
+Intuitively, the self-attention layer answers the question:
+
+> Which tokens should I look at?
+
+The MLP answers a different question:
+
+> Once I have collected contextual information, how should I transform it?
+
+So self-attention mixes information across tokens, while the MLP enriches the representation of each token independently.
+
+As before, Transformers usually add a residual connection and a layer normalization around the MLP block. Therefore, the output of one Transformer block can be written as
+
+$$
+H_{\mathrm{out}}
+=
 \mathrm{LayerNorm}
 \left(
-H + \widetilde{H}
+H_{\mathrm{attn}} + \mathrm{MLP}(H_{\mathrm{attn}})
 \right).
 $$
 
+This gives us a new matrix
+
+$$
+H_{\mathrm{out}} \in \mathbb{R}^{T \times d},
+$$
+
+where each row is a richer contextual representation of the corresponding token.
+
+If we stack several Transformer blocks, this process is repeated. Each layer refines the representation by first allowing tokens to communicate through self-attention, and then transforming each token representation through an MLP.
+
+The whole point of the Transformer is therefore to build good contextual representations of the sequence.
 
