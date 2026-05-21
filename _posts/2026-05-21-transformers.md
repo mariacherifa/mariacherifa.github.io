@@ -18,21 +18,19 @@ To treat text as a mathematical object, we first need to define two important no
 A vocabulary is a finite set of symbols used to represent text. These symbols can be characters, subwords, words, numbers, punctuation marks, or special tokens. We denote the vocabulary by
 
 $$
-\mathcal{V} = \lbracev_1, \dots, v_V
-brace,
+\mathcal{V} = \{v_1, \dots, v_V \},
 $$
 
 where $V = |\mathcal{V}|$ is the size of the vocabulary.
 
-We define an indexing function,  $\mathrm{idx} : \mathcal{V} \to \lbrace1,\dots,V
-brace$ by, 
+We define an indexing function,  $\mathrm{idx} : \mathcal{V} \to \{1,\dots,V\}$ by, 
 
 $$
 \mathrm{idx}(v_i)=i.
 $$
 
-This function maps each element in the vocabulary to its integer index. Conversely, we define a decoding function $\mathrm{tok} : \lbrace1,\dots,V
-brace \to \mathcal{V}$ by
+This function maps each element in the vocabulary to its integer index. Conversely, we define a decoding function $\mathrm{tok} : \{1,\dots,V
+\} \to \mathcal{V}$ by
 
 $$
 \mathrm{tok}(i)=v_i.
@@ -41,8 +39,8 @@ $$
 Once a vocabulary and an indexing function are fixed, a text can be represented as a discrete sequence of token indices:
 
 $$
-(x_1, \dots, x_T) \in \lbrace1,\dots,V
-brace^T.
+(x_1, \dots, x_T) \in \{1,\dots,V
+\}^T.
 $$
 
 Here, $T$ denotes the length of the tokenized text, and each integer $x_t$ corresponds to the token
@@ -55,8 +53,8 @@ In other words, $x_t$ is not the token itself, but the index of a token in the v
 
 # From Tokens to Embeddings
 
-At this stage, a text is represented as a sequence of integers,$(x_1,\dots,x_T) \in \lbrace1,\dots,V
-brace^T$. Each integer $x_t$ identifies one token in the vocabulary. However, an integer index is not a very meaningful object for a neural network. For example, if the token `"cat"` has index $42$ and the token `"dog"` has index $43$, this does not mean that `"dog"` is mathematically larger than `"cat"` or that they are close simply because their indices are close. Therefore, we need to transform each discrete token index into a vector representation. This is the role of \textbf{the embedding layer}.
+At this stage, a text is represented as a sequence of integers,$(x_1,\dots,x_T) \in \{1,\dots,V
+\}^T$. Each integer $x_t$ identifies one token in the vocabulary. However, an integer index is not a very meaningful object for a neural network. For example, if the token `"cat"` has index $42$ and the token `"dog"` has index $43$, this does not mean that `"dog"` is mathematically larger than `"cat"` or that they are close simply because their indices are close. Therefore, we need to transform each discrete token index into a vector representation. This is the role of \textbf{the embedding layer}.
 
 A first way to represent a token $x_t$ is through a one-hot vector. The one-hot vector associated with $x_t$ is denoted by $e_{x_t}$ and belongs to $\mathbb{R}^V$:
 
