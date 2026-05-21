@@ -18,7 +18,7 @@ To treat text as a mathematical object, we first need to define two important no
 A vocabulary is a finite set of symbols used to represent text. These symbols can be characters, subwords, words, numbers, punctuation marks, or special tokens. We denote the vocabulary by
 
 $$
-\mathcal{V} = \{v_1, \dots, v_V \},
+\mathcal{V} = \lbrace v_1, \dots, v_V \rbrace,
 $$
 
 where $ V = |\mathcal{V}| $ is the size of the vocabulary.
