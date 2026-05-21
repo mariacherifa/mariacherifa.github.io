@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Understanding Transformers with math and intuitions"
+title: "Notes on Transformers"
 date: 2026-05-21
 tags: transformers attention deep-learning
 categories: machine-learning
