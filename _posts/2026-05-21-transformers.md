@@ -263,13 +263,7 @@ $$
 The coefficients $\alpha_{t,s}$ are called **attention weights**. For a fixed $t$, they satisfy
 
 $$
-\alpha_{t,s} \geq 0
-$$
-
-and
-
-$$
-\sum_{s=1}^{T} \alpha_{t,s}=1.
+\alpha_{t,s} \geq 0, \qquad \sum_{s=1}^{T} \alpha_{t,s}=1.
 $$
 
 Therefore, for each token $x_t$, the attention weights define a probability distribution over all tokens in the sequence. The quantity $\alpha_{t,s}$ tells us how much token $x_t$ attends to token $x_s$.
