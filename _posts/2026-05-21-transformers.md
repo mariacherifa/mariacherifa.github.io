@@ -21,7 +21,7 @@ $$
 \mathcal{V} = \lbrace v_1, \dots, v_V \rbrace,
 $$
 
-where $V = |\mathcal{V}|$ is the size of the vocabulary.
+where $V = \lvert \mathcal{V}\rvert$ is the size of the vocabulary.
 
 We define an indexing function,  $\mathrm{idx} : \mathcal{V} \to \{1,\dots,V\}$ by, 
 
