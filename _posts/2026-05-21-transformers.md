@@ -81,3 +81,210 @@ x_t \longmapsto h_t^{(0)} \in \mathbb{R}^d.
 $$
 
 The matrix $E$ is not chosen manually. It is a learnable parameter of the model. At the beginning of training, its entries are initialized randomly. During training, the model updates $E$ using gradient descent, so that tokens used in similar contexts tend to acquire useful vector representations. The dimension $d$ is a hyperparameter. It controls the size of the vector used to represent each token. A small value of $d$ gives a compact representation, but may not be expressive enough. A large value of $d$ allows the model to store richer information, but increases the number of parameters and the computational cost. In practice, $d$ is chosen depending on the size of the model, the amount of data, and the available computational resources.
+
+# Self-Attention
+
+At this stage, the text is represented by a matrix
+
+$$
+H =
+\begin{pmatrix}
+h_1 \\
+h_2 \\
+\vdots \\
+h_T
+\end{pmatrix}
+\in \mathbb{R}^{T \times d},
+$$
+
+where each row $h_t \in \mathbb{R}^d$ is the embedding representation of the token $x_t$.
+
+This gives us a vector representation of each token. However, these vectors are still not **fully contextual**. The representation of a token should not depend only on the token itself, but also on the other tokens around it. For example, the meaning of a word can change depending on the sentence in which it appears. Therefore, if we want to predict the next token or understand the structure of a sequence, we need representations that take the whole context into account.
+
+This is the main intuition behind self-attention: **self-attention allows each token to build a new representation by looking at the other tokens in the same sequence**.
+
+Mathematically, self-attention starts by constructing three matrices from $H$:
+
+$$
+Q = HW_Q,
+\qquad
+W_Q \in \mathbb{R}^{d \times d_k},
+$$
+
+$$
+K = HW_K,
+\qquad
+W_K \in \mathbb{R}^{d \times d_k},
+$$
+
+$$
+V = HW_V,
+\qquad
+W_V \in \mathbb{R}^{d \times d_v}.
+$$
+
+Therefore,
+
+$$
+Q \in \mathbb{R}^{T \times d_k},
+\qquad
+K \in \mathbb{R}^{T \times d_k},
+\qquad
+V \in \mathbb{R}^{T \times d_v}.
+$$
+
+The rows of these matrices are denoted by
+
+$$
+Q =
+\begin{pmatrix}
+q_1 \\
+q_2 \\
+\vdots \\
+q_T
+\end{pmatrix},
+\qquad
+K =
+\begin{pmatrix}
+k_1 \\
+k_2 \\
+\vdots \\
+k_T
+\end{pmatrix},
+\qquad
+V =
+\begin{pmatrix}
+v_1 \\
+v_2 \\
+\vdots \\
+v_T
+\end{pmatrix}.
+$$
+
+The vectors $q_t$, $k_t$, and $v_t$ are called the **query**, **key**, and **value** vectors associated with token $x_t$.
+
+Intuitively, for a token $x_t$ represented by $h_t$:
+
+- $q_t$ is the query: it represents what token $x_t$ is looking for in the other tokens.
+- $k_s$ is the key of another token $x_s$: it represents what token $x_s$ offers, or how it can be matched.
+- $v_s$ is the value of token $x_s$: it represents the information that token $x_s$ can contribute if it is considered relevant.
+
+So the self-attention mechanism answers the following question:
+
+> For a given token $x_t$, which other tokens $x_s$ should it pay attention to in order to build a better contextual representation?
+
+To measure the relevance of token $x_s$ to token $x_t$, we compare the query $q_t$ with the key $k_s$. This comparison is done using a dot product:
+
+$$
+q_t^\top k_s.
+$$
+
+If this quantity is large, then token $x_s$ is highly relevant to token $x_t$. If it is small, then token $x_s$ is less relevant to token $x_t$.
+
+Thus, we define the attention score between token $t$ and token $s$ by
+
+$$
+a_{t,s}
+=
+\frac{q_t^\top k_s}{\sqrt{d_k}}.
+$$
+
+**Remark.** The normalization factor $\sqrt{d_k}$ is important when the dimension of the key and query vectors is large. Indeed, the dot product $q_t^\top k_s$ is obtained by summing over $d_k$ coordinates, so its magnitude tends to grow with $d_k$. Without this normalization, the scores could become too large in magnitude. This would make the softmax very sharp, meaning that most of the probability mass would be assigned to only a few tokens. Dividing by $\sqrt{d_k}$ keeps the scores on a more stable scale, leading to smoother attention weights and more stable optimization.
+
+For a fixed token $x_t$, we compute one score with every token in the sequence:
+
+$$
+a_{t,1}, a_{t,2}, \dots, a_{t,T}.
+$$
+
+These scores are then transformed into probabilities using the softmax function:
+
+$$
+\alpha_{t,s}
+=
+\frac{\exp(a_{t,s})}
+{\sum_{r=1}^{T} \exp(a_{t,r})}.
+$$
+
+The coefficients $\alpha_{t,s}$ are called **attention weights**. For a fixed $t$, they satisfy
+
+$$
+\alpha_{t,s} \geq 0
+$$
+
+and
+
+$$
+\sum_{s=1}^{T} \alpha_{t,s}=1.
+$$
+
+Therefore, for each token $x_t$, the attention weights define a probability distribution over all tokens in the sequence. The quantity $\alpha_{t,s}$ tells us how much token $x_t$ attends to token $x_s$.
+
+Once we have these attention weights, we compute the new representation of token $x_t$ as a weighted average of the value vectors:
+
+$$
+\widetilde{h}_t
+=
+\sum_{s=1}^{T} \alpha_{t,s} v_s.
+$$
+
+This vector $\widetilde{h}_t$ is the contextual representation of token $x_t$. It is no longer built only from the token itself. Instead, it is built from all tokens in the sequence, weighted by their relevance to $x_t$.
+
+**Remark.** We can think of self-attention as producing a kernel-like representation of tokens, because each output vector is a weighted combination of value vectors. However, there is an important difference with classical kernel methods: here, the weights are not fixed by a predefined kernel. They are learned through the matrices $W_Q$, $W_K$, and $W_V$, and they also depend on the input sequence itself.
+
+In matrix form, all attention scores can be computed at once as
+
+$$
+A
+=
+\frac{QK^\top}{\sqrt{d_k}}.
+$$
+
+Here,
+
+$$
+A \in \mathbb{R}^{T \times T},
+$$
+
+and the entry $A_{t,s}$ is the attention score between token $x_t$ and token $x_s$.
+
+Then, we apply the softmax row by row:
+
+$$
+P
+=
+\mathrm{softmax}
+\left(
+\frac{QK^\top}{\sqrt{d_k}}
+\right).
+$$
+
+Each row of $P$ contains the attention weights for one token. In other words,
+
+$$
+P_{t,s} = \alpha_{t,s}.
+$$
+
+Finally, the output of self-attention is
+
+$$
+\widetilde{H}
+=
+PV.
+$$
+
+Equivalently,
+
+$$
+\widetilde{H}
+=
+\mathrm{softmax}
+\left(
+\frac{QK^\top}{\sqrt{d_k}}
+\right)
+V.
+$$
+
+This is the **scaled dot-product self-attention** formula.
+
+The important point is that each row $\widetilde{h}_t$ of $\widetilde{H}$ is a new representation of token $x_t$ that depends on the entire sequence. This is why self-attention is a mechanism for building context-dependent representations.
