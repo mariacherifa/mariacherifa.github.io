@@ -285,18 +285,10 @@ In matrix form, all attention scores can be computed at once as
 $$
 A
 =
-\frac{QK^\top}{\sqrt{d_k}}.
+\frac{QK^\top}{\sqrt{d_k}} \in \mathbb{R}^{T \times T}.
 $$
 
-Here,
-
-$$
-A \in \mathbb{R}^{T \times T},
-$$
-
-and the entry $A_{t,s}$ is the attention score between token $x_t$ and token $x_s$.
-
-Then, we apply the softmax row by row:
+and the entry $A_{t,s}$ is the attention score between token $x_t$ and token $x_s$. Then, we apply the softmax row by row:
 
 $$
 P
@@ -307,21 +299,7 @@ P
 \right).
 $$
 
-Each row of $P$ contains the attention weights for one token. In other words,
-
-$$
-P_{t,s} = \alpha_{t,s}.
-$$
-
-Finally, the output of self-attention is
-
-$$
-\widetilde{H}
-=
-PV.
-$$
-
-Equivalently,
+Each row of $P$ contains the attention weights for one token. Finally, the output of self-attention is
 
 $$
 \widetilde{H}
@@ -336,3 +314,101 @@ $$
 This is the **scaled dot-product self-attention** formula.
 
 The important point is that each row $\widetilde{h}_t$ of $\widetilde{H}$ is a new representation of token $x_t$ that depends on the entire sequence. This is why self-attention is a mechanism for building context-dependent representations.
+
+## Residual Connection and Layer Normalization
+
+The self-attention mechanism gives us a new contextual representation $\widetilde{H}$. However, in practice, Transformers do not simply replace $H$ by $\widetilde{H}$. Instead, they use two important operations: a **residual connection** and **layer normalization**.
+
+### Why Do We Need a Residual Connection?
+
+The residual connection consists of adding the input representation back to the output of the self-attention layer:
+
+$$
+H + \widetilde{H}.
+$$
+
+The idea is simple but very important. The self-attention layer computes new information from the context, but we do not want the model to lose the original representation of the tokens. By adding $H$ back, the model keeps direct access to the previous representation.
+
+This is especially useful in deep networks. Without residual connections, information could gradually be distorted or lost as it passes through the model. Residual connections create a direct path for information to flow from earlier layers to later layers. They also make optimization easier: instead of forcing each layer to learn a completely new representation from scratch, the layer only needs to learn a correction, or an update, to the previous representation.
+
+### Why Do We Need Layer Normalization?
+
+After the residual connection, we obtain
+
+$$
+H_{\mathrm{res}} = H + \widetilde{H}.
+$$
+
+This matrix contains one vector representation for each token. However, as the signal passes through many Transformer layers, the scale of these vectors can become unstable. Some coordinates may become very large, while others may become very small. This can make training harder, because the next layers receive inputs whose numerical scale changes during training.
+
+Layer normalization is used to make these representations more stable. The key idea is the following: for each token, we normalize its hidden vector across the feature dimension. So if
+
+$$
+h_t =
+(h_{t,1},\dots,h_{t,d})
+\in \mathbb{R}^d,
+$$
+
+then layer normalization computes the mean and variance of the coordinates of this vector:
+
+$$
+\mu_t
+=
+\frac{1}{d}
+\sum_{i=1}^{d} h_{t,i},
+\qquad
+\sigma_t^2
+=
+\frac{1}{d}
+\sum_{i=1}^{d}
+(h_{t,i}-\mu_t)^2.
+$$
+
+Then it normalizes each coordinate:
+
+$$
+\widehat{h}_{t,i}
+=
+\frac{h_{t,i}-\mu_t}{\sqrt{\sigma_t^2+\varepsilon}}.
+$$
+
+The small constant $\varepsilon$ is added to avoid division by zero.
+
+However, we do not want to force every representation to always have exactly the same fixed scale. The model should still be able to choose the scale and shift that are useful for the task. Therefore, layer normalization introduces two learnable parameters:
+
+$$
+\gamma \in \mathbb{R}^d
+\qquad
+\text{and}
+\qquad
+\beta \in \mathbb{R}^d.
+$$
+
+The final layer-normalized vector is
+
+$$
+\mathrm{LayerNorm}(h_t)
+=
+\gamma
+\odot
+\frac{h_t-\mu_t}{\sqrt{\sigma_t^2+\varepsilon}}
++
+\beta.
+$$
+
+Here, $\odot$ denotes coordinate-wise multiplication.
+
+The important point is that layer normalization is applied independently to each token representation. It normalizes the coordinates of a single hidden vector $h_t$, not the whole sequence at once. Intuitively, it keeps the representation numerically stable before passing it to the next part of the Transformer block.
+
+After self-attention and the residual connection, the output of this sublayer is therefore
+
+$$
+H_{\mathrm{attn}}
+=
+\mathrm{LayerNorm}
+\left(
+H + \widetilde{H}
+\right).
+$$
+
+
