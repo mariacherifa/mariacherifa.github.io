@@ -635,8 +635,13 @@ $$
 \ell_t = W_{\mathrm{out}}h_t + b_{\mathrm{out}},
 $$
 
-where
+where $W_{\mathrm{out}}\in\mathbb{R}^{V\times d}$ and 
+$b_{\mathrm{out}}\in\mathbb{R}^{V}$ are learned parameters: 
+$W_{\mathrm{out}}$ maps the hidden representation 
+$h_t\in\mathbb{R}^d$ to one score per vocabulary token, and 
+$b_{\mathrm{out}}$ adds a learned bias to each token score.
 
+Thus,
 $$
 \ell_t \in \mathbb{R}^{V}.
 $$
