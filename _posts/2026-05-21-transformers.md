@@ -751,7 +751,6 @@ This is the central idea behind autoregressive language modeling: the Transforme
 
 The overall pipeline can be summarized as follows:
 
-```
 <div style="text-align:center; line-height:2; font-size:1.05em; margin: 2em 0;">
   <div><strong>Tokens</strong></div>
   <div>↓</div>
