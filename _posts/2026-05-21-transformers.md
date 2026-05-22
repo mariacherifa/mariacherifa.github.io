@@ -130,7 +130,7 @@ The dimension $d$ is a hyperparameter. It controls the size of the vector used t
 
 # Self-Attention
 
-At this stage, the text is represented by a matrix
+At this stage, the text is represented by a matrix:
 
 $$
 H =
@@ -143,7 +143,7 @@ h_T
 \in \mathbb{R}^{T \times d},
 $$
 
-where each row $h_t \in \mathbb{R}^d$ is the embedding representation of the token $x_t$.
+where each row $h_t \in \mathbb{R}^d$ is the embedding representation of the token $x_t$. For simplicity, in this section we write \(H\) for the current hidden representation, which may be the initial embedding matrix \(H^{(0)}\) or the output of a previous Transformer block.
 
 This gives us a vector representation of each token. However, these vectors are still not **fully contextual**. The representation of a token should not depend only on the token itself, but also on the other tokens around it. For example, the meaning of a word can change depending on the sentence in which it appears. Therefore, if we want to predict the next token or understand the structure of a sequence, we need representations that take the whole context into account.
 
@@ -305,23 +305,9 @@ This is why we need **causal self-attention**.
 
 ## Causal Self-Attention
 
-Causal self-attention is the same attention mechanism as before, but with one additional constraint: token $x_t$ is only allowed to attend to tokens at positions $s \leq t$.
+Causal self-attention is the same mechanism as self-attention, but with one important constraint: when computing the representation of token $x_t$, the model can only attend to tokens at positions $s \leq t$.
 
-In other words, when computing the representation of token $x_t$, the model can use
-
-$$
-x_1,\dots,x_t,
-$$
-
-but it cannot use
-
-$$
-x_{t+1},\dots,x_T.
-$$
-
-This is enforced using a **causal mask**.
-
-Recall that the attention score matrix is
+To impose this constraint directly inside the attention computation, we modify the attention scores before applying the softmax. Recall that the attention score matrix is:
 
 $$
 A
@@ -329,17 +315,7 @@ A
 \frac{QK^\top}{\sqrt{d_k}}.
 $$
 
-To prevent token $x_t$ from attending to future tokens $x_s$ with $s>t$, we modify the attention scores by setting
-
-$$
-A_{t,s} = -\infty
-\qquad
-\text{for } s>t.
-$$
-
-Therefore, after the softmax, future tokens receive attention weight zero. The representation of token $x_t$ is then built only from tokens $x_1,\dots,x_t$. 
-
-To express this masking operation compactly, we introduce a mask matrix $M \in \mathbb{R}^{T \times T}$ defined by:
+We introduce a mask matrix $M \in \mathbb{R}^{T \times T}$ defined by:
 
 $$
 M_{t,s}
@@ -350,7 +326,7 @@ M_{t,s}
 \end{cases}
 $$
 
-Then causal self-attention is written as:
+After applying the softmax, the entries corresponding to future positions receive attention weight zero. Therefore, the causal self-attention formula becomes:
 
 $$
 \widetilde{H}
@@ -361,6 +337,8 @@ $$
 \right)
 V.
 $$
+
+Thus, the representation of token $x_t$ is built only from $x_1,\dots,x_t$.
 
 ## Multi-Head Attention
 
@@ -404,7 +382,7 @@ O^{(1)},\dots,O^{(m)}
 W_O.
 $$
 
-The role of $W_O$ is to mix the information coming from the different heads and return a representation in the same dimension as the input. Therefore,
+The role of $W_O$ is to project the concatenated heads back to dimension $d$. Intuitively, it also mixes the information coming from the different heads into a single representation. Therefore,
 
 $$
 \mathrm{MultiHead}(H) \in \mathbb{R}^{T \times d}.
@@ -412,7 +390,7 @@ $$
 
 The main idea is that multi-head attention allows the model to look at the sequence from several perspectives at the same time. Each head can learn a different way of comparing tokens and extracting contextual information.
 
-For the rest of the Transformer block, we denote the output of multi-head attention by
+For the rest of the Transformer block, we denote the output of multi-head attention by:
 
 $$
 \widetilde{H}
@@ -773,7 +751,7 @@ This is the central idea behind autoregressive language modeling: the Transforme
 
 The overall pipeline can be summarized as follows:
 
-```html
+```
 <div style="text-align:center; line-height:2; font-size:1.05em; margin: 2em 0;">
   <div><strong>Tokens</strong></div>
   <div>↓</div>
