@@ -143,7 +143,7 @@ h_T
 \in \mathbb{R}^{T \times d},
 $$
 
-where each row $h_t \in \mathbb{R}^d$ is the embedding representation of the token $x_t$. For simplicity, in this section we write \(H\) for the current hidden representation, which may be the initial embedding matrix \(H^{(0)}\) or the output of a previous Transformer block.
+where each row $h_t \in \mathbb{R}^d$ is the embedding representation of the token $x_t$. For simplicity, in this section we write $H$ for the current hidden representation, which may be the initial embedding matrix $H^{(0)}$ or the output of a previous Transformer block.
 
 This gives us a vector representation of each token. However, these vectors are still not **fully contextual**. The representation of a token should not depend only on the token itself, but also on the other tokens around it. For example, the meaning of a word can change depending on the sentence in which it appears. Therefore, if we want to predict the next token or understand the structure of a sequence, we need representations that take the whole context into account.
 
