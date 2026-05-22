@@ -65,12 +65,10 @@ $$
 
 A pretrained language model treats this prompt as a prefix and tries to continue it in a statistically plausible way. Many continuations may be reasonable under the pretraining distribution, for example:
 
-\begin{itemize}
-    \item ``This question was asked in an exam ...''
-    \item ``See Chapter 7 for a proof ...''
-    \item ``The spectral theorem is one of the most important results in linear algebra ...''
-\end{itemize}
-
+- ``This question was asked in an exam ...''
+- ``See Chapter 7 for a proof ...''
+- ``The spectral theorem is one of the most important results in linear algebra ...''
+  
 All of these are plausible continuations of the prompt. However, if the model is being used as an assistant, we want something more specific. We do not only want a continuation that is likely under the distribution of internet text. We want a continuation that is helpful, clear, and adapted to the user’s request.
 
 This is the motivation for post-training. Pretraining gives the model broad linguistic and conceptual competence. Post-training tries to shape this competence into a more useful behavior. In particular, it changes the model so that prompts are treated less like arbitrary prefixes to continue, and more like instructions to answer.
