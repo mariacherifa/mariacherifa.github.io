@@ -28,7 +28,7 @@ $$
 
 where $V = \lvert \mathcal{V}\rvert$ is the size of the vocabulary.
 
-We define an indexing function,  $\mathrm{idx} : \mathcal{V} \to \{1,\dots,V\}$ by, 
+We define an indexing function,  $\mathrm{idx} : \mathcal{V} \to \lbrace 1,\dots,V\rbrace$ by, 
 
 $$
 \mathrm{idx}(v_i)=i.
