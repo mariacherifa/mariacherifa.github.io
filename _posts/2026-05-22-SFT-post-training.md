@@ -141,11 +141,12 @@ $$
 Thus, SFT is maximum likelihood training on curated prompt-response examples. The model is encouraged to assign high probability to the target response tokens. If the model assigns low probability to a token appearing in the desired answer, the loss increases. Training then adjusts the parameters so that similar responses become more likely in similar contexts.
 
 The parameters $\theta$ are initialized from the pretrained model: 
+
 $$
 \theta \leftarrow \theta_0,
 $$
 
-where \(\theta_0\) denotes the parameters obtained after pretraining. SFT then continues gradient-based optimization, but now using the supervised dataset \(\mathcal D_{\mathrm{SFT}}\).
+where $\theta_0$ denotes the parameters obtained after pretraining. SFT then continues gradient-based optimization, but now using the supervised dataset \(\mathcal D_{\mathrm{SFT}}\).
 
 # What changes during SFT?
 It is important to notice what does **not** change. The Transformer architecture is the same. The model still uses token embeddings, positional information, causal self-attention, MLP blocks, residual connections, layer normalization, and a final softmax over the vocabulary. The next-token prediction mechanism is also the same. What changes is the data distribution and therefore the behavior encouraged by the loss. During pretraining, the model sees sequences sampled from a broad text distribution, which we can denote informally by
