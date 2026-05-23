@@ -155,7 +155,7 @@ $$x \sim \mathcal{D}_{\text{pretrain}}.$$
 
 It learns to predict,
 
-$$x_t \text{from } x_{<t}$$
+$$x_t \text{ from } x_{<t}$$
 
 During SFT, the model sees formatted prompt-response examples
 
@@ -163,7 +163,7 @@ $$z_i=(u_i,y_i)$$
 
 where $u_i$ is the prompt and $y_i$ is the target response. For response tokens, the prediction problem becomes
 
-$$y_{i,t} \text{from } (u_i,y_{i,<t})$$
+$$y_{i,t} \text{ from } (u_i,y_{i,<t})$$
 
 Thus, SFT changes the model from a distribution $p_{\theta_{0}}(\cdot\mid \text{generic prefix})$ toward a distribution $p_{\theta_{\text{SFT}}}(\cdot\mid \text{user prompt})$ that assigns more mass to assistant-like continuations.
 
@@ -223,7 +223,7 @@ $$
 $$
 
 
-The true distribution \(\mathcal D_{\mathrm{SFT}}\) is unknown. We only observe a finite dataset $\{(u_i,y_i)\}_{i=1}^n$. Therefore, we replace the expectation by an empirical average. This gives
+The true distribution $\mathcal D_{\mathrm{SFT}}$ is unknown. We only observe a finite dataset $\{(u_i,y_i)\}_{i=1}^n$. Therefore, we replace the expectation by an empirical average. This gives
 
 $$
 \widehat{\mathcal R}(\theta)
@@ -292,8 +292,6 @@ $$
 and
 
 $$
-\mathcal D_{\mathrm{SFT}}
-=
 \{(u_i,y_i)\}_{i=1}^n.
 $$
 
@@ -303,11 +301,11 @@ $$
 \theta \leftarrow \theta_0.
 $$
 
-For minibatches \(B\subset \mathcal D_{\mathrm{SFT}}\):
+For minibatches $B\subset \mathcal D_{\mathrm{SFT}}:
 
 1. Format each prompt-response pair as a single token sequence $z_i = (u_i,y_i).$
-2. Build a mask \(M_i\).
-3. Run the transformer on \(z_i\) and compute logits at every position.
+2. Build a mask $M_i$.
+3. Run the transformer on $z_i$ and compute logits at every position.
 
 4. Compute the masked cross-entropy loss
 
@@ -354,13 +352,13 @@ This is why SFT can improve behaviors such as following instructions, answering 
 
 However, SFT also has important limitations.
 
-The first limitation is that SFT only learns from positive demonstrations. For each prompt \(u_i\), the dataset usually contains one desired answer \(y_i\). The loss tells the model:
+The first limitation is that SFT only learns from positive demonstrations. For each prompt $u_i$, the dataset usually contains one desired answer $y_i$. The loss tells the model:
 
 $$
 \text{increase the probability of } y_i.
 $$
 
-But it does not explicitly compare \(y_i\) with other possible answers.
+But it does not explicitly compare $y_i$ with other possible answers.
 
 Suppose we have two responses to the same prompt:
 
@@ -374,7 +372,7 @@ $$
 y^- = \text{an answer that is plausible but misleading}.
 $$
 
-SFT trains on \(y^+\), but it does not directly say:
+SFT trains on $y^+$, but it does not directly say:
 
 $$
 y^+ \succ y^-.
@@ -386,8 +384,7 @@ The second limitation is that the SFT objective is token-level, while the qualit
 
 The loss is
 
-$$
--
+$$-
 \sum_t
 \log p_\theta(y_t\mid u,y_{<t}).
 $$
