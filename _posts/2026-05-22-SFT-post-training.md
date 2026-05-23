@@ -189,15 +189,27 @@ $$
 Using the autoregressive factorization, this becomes
 
 $$
-\mathcal R(\theta) =
-\mathbb E_{(u,y)\sim \mathcal D_{\mathrm{SFT}}}[-\sum_{t=1}^{m} \log p_\theta(y_t\mid u,y_{<t})
-].
+\mathcal{R}(\theta)
+=
+\mathbb{E}_{(u,y)\sim\mathcal{D}_{\mathrm{SFT}}}
+\left[
+-
+\sum_{t=1}^{m}
+\log p_\theta\left(y_t \mid u, y_{<t}\right)
+\right].
 $$
+
 
 The true distribution \(\mathcal D_{\mathrm{SFT}}\) is unknown. We only observe a finite dataset $\{(u_i,y_i)\}_{i=1}^n$. Therefore, we replace the expectation by an empirical average. This gives
 
 $$
-\widehat{\mathcal R}(\theta) = - \frac{1}{n} \sum_{i=1}^n \sum_{t=1}^{m_i} \log p_\theta(y_{i,t}\mid u_i,y_{i,<t}).
+\widehat{\mathcal R}(\theta)
+=
+-
+\frac{1}{n}
+\sum_{i=1}^{n}
+\sum_{t=1}^{m_i}
+\log p_\theta\left(y_{i,t}\mid u_i, y_{i,<t}\right).
 $$
 
 Thus,
