@@ -384,8 +384,7 @@ The second limitation is that the SFT objective is local, while many properties 
 
 The loss is
 
-$$
--
+$$-
 \sum_t
 \log p_\theta(y_t\mid u,y_{<t}).
 $$
