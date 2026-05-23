@@ -350,17 +350,17 @@ This is why SFT can improve behaviors such as following instructions, answering 
 
 # Limitations of SFT
 
-However, SFT also has important limitations.
+SFT is a strong first step in post-training, but it also has important limitations.
 
-The first limitation is that SFT only learns from positive demonstrations. For each prompt $u_i$, the dataset usually contains one desired answer $y_i$. The loss tells the model:
+The first limitation is that SFT learns only from positive demonstrations. For each prompt $u_i$, the dataset usually contains a desired response $y_i$. The loss tells the model:
 
 $$
 \text{increase the probability of } y_i.
 $$
 
-But it does not explicitly compare $y_i$ with other possible answers.
+However, it does not explicitly compare $y_i$ with other possible responses.
 
-Suppose we have two responses to the same prompt:
+For example, suppose we have two answers to the same prompt:
 
 $$
 y^+ = \text{a clear, correct, helpful answer},
@@ -369,27 +369,28 @@ $$
 and
 
 $$
-y^- = \text{an answer that is plausible but misleading}.
+y^- = \text{a plausible but misleading answer}.
 $$
 
-SFT trains on $y^+$, but it does not directly say:
+If SFT trains on $y^+$, it increases the likelihood of $y^+$. But it does not directly encode the preference relation
 
 $$
 y^+ \succ y^-.
 $$
 
-It only increases the likelihood of the demonstrated answer.
+In other words, SFT shows the model what a good answer looks like, but it does not explicitly teach the model to distinguish it from worse alternatives.
 
-The second limitation is that the SFT objective is token-level, while the qualities we care about are often sequence-level.
+The second limitation is that the SFT objective is local, while many properties we care about are global.
 
 The loss is
 
-$$-
+$$
+-
 \sum_t
 \log p_\theta(y_t\mid u,y_{<t}).
 $$
 
-This evaluates the response one token at a time. But human preferences are usually about the whole answer:
+It trains the model to predict each token of the demonstrated answer. However, human judgments are usually about the answer as a whole:
 
 $$
 \text{Was it helpful?}
@@ -407,13 +408,13 @@ $$
 \text{Was it too verbose, too vague, or too confident?}
 $$
 
-These are not naturally token-level properties.
+These properties are not naturally assigned to individual tokens. They are global properties of the response.
 
-The third limitation is that there may be many good answers to the same prompt. SFT usually treats one demonstration as the target, even though several responses could be equally good or better. This can make the objective too narrow.
+The third limitation is that many prompts have several good answers. SFT often treats one demonstration as the target, even though other responses could be equally good, or even better depending on the user’s intent. This can make the objective too narrow: the model learns to imitate the demonstrations, but not necessarily to choose the best response among several acceptable ones.
 
-The fourth limitation is distribution shift. The model may behave well on prompts similar to the SFT dataset, but users can ask unusual, adversarial, ambiguous, or highly specialized questions. In those cases, imitation of the SFT data may not be enough.
+The fourth limitation is distribution shift. The model may behave well on prompts similar to those in the SFT dataset, but users can ask unusual, ambiguous, adversarial, or highly specialized questions. In these cases, imitation of the training demonstrations may not be enough.
 
-Thus, SFT is a strong first post-training step, but it does not fully solve the problem of aligning model behavior with human preferences.
+Thus, SFT gives the model an important first notion of assistant-like behavior, but it does not fully solve the problem of aligning model outputs with human preferences.
 
 # From demonstrations to preferences
 The limitations of SFT motivate the next stage of post-training. Instead of only showing the model examples of good answers, we can compare answers. Given a prompt $u$, suppose we have two candidate responses:
