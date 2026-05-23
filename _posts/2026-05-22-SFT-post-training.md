@@ -88,7 +88,7 @@ $$y_i= \text{desired assistant response.}$$
 
 The important point is that the response $y_i$ is not arbitrary text. It is intended to represent the kind of behavior we want from the assistant: clear, useful, correct, and adapted to the prompt. Let
 
-$$y_{i}=(y_{i,1},\hdots,y_{i,m_{i}})$$
+$$y_{i}=(y_{i,1},\dots,y_{i,m_{i}})$$
 
 be a tokenized response associated with prompt $u_i$. Since the model is still autoregressive, the conditional probability of the full response is factorized token by token: 
 
@@ -104,7 +104,7 @@ This is the key point. SFT does not change the autoregressive nature of the mode
 
 
 # The SFT objective 
-For one example \((u_i,y_i)\), the negative log-likelihood loss is:
+For one example $(u_i,y_i)$, the negative log-likelihood loss is:
 
 $$
 \mathcal{L}_{\mathrm{SFT}}^{(i)}(\theta)
