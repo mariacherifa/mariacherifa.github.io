@@ -10,7 +10,7 @@ mermaid: true
 # Introduction 
 In the previous post, we described the decoder-only Transformer architecture and the next-token prediction objective. We saw that an autoregressive language model takes a sequence of tokens and, at each position, outputs a probability distribution over the next token. This raises a natural question. If a model is trained only to predict the next token, why does it behave like an assistant?
 
-A pretrained language model learns to continue text. But an assistant is expected to do something more specific: follow instructions, answer clearly, adapt to a user, refuse some unsafe requests, and maintain a conversational format. These behaviors are not guaranteed by next-token prediction alone. This is the role of post-training.
+A pretrained language model learns to continue text. But an assistant is expected to do something more specific: follow instructions, answer clearly, adapt to a user, refuse some unsafe requests, and maintain a conversational format. These behaviors are not guaranteed by next-token prediction alone. This is the role of **post-training**.
 
 Post-training refers to the set of training procedures applied after pretraining in order to shape the behavior of a language model. In this post, we focus on the first and most basic post-training step: supervised fine-tuning, usually abbreviated as SFT.
 # The Starting Point: A Pretrained Autoregressive Model
@@ -75,17 +75,29 @@ All of these may be plausible continuations of text. But if the model is used as
 
 # Prompt-Response Data
 Supervised fine-tuning uses a dataset of prompt-response pairs. We write this dataset as
-$$\mathcal{D}_{\text{SFT}} = \{(u_i,y_i)\}_{i=1}^n.$$
+
+$$\{(u_i,y_i)\}_{i=1}^n.$$
+
 Here, 
+
 $$u_i= \text{prompt, instruction, or conversation context},$$
-and 
+
+and
+
 $$y_i= \text{desired assistant response.}$$
+
 The important point is that the response $y_i$ is not arbitrary text. It is intended to represent the kind of behavior we want from the assistant: clear, useful, correct, and adapted to the prompt. Let
+
 $$y_{i}=(y_{i,1},\hdots,y_{i,m_{i}})$$
+
 be a tokenized response associated with prompt $u_i$. Since the model is still autoregressive, the conditional probability of the full response is factorized token by token: 
+
 $$p_{\theta}(y_i\mid u_i)=\prod_{t=1}^{m_{i}} p_{\theta}(y_{i,t}\mid u_i,y_{i,<t})$$
+
 where 
-$$y_{i,<t}=(y_{i,1},\hdots,y_{i,t-1})$$
+
+$$y_{i,<t}=(y_{i,1},\dots,y_{i,t-1})$$
+
 is the previous response tokens to the prompt $u_i$. 
 
 This is the key point. SFT does not change the autoregressive nature of the model. At every step, the model still predicts the next token. What changes is the training distribution. During pretraining, the model predicts tokens in generic text. During SFT, the model predicts answer tokens conditioned on prompts.
