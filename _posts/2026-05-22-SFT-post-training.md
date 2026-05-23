@@ -2,7 +2,7 @@
 layout: post
 title: "Supervised fine tuning"
 date: 2026-05-22
-tags: transformers post training deep-learning
+tags: transformers post-training deep-learning
 categories: machine-learning
 math: true
 mermaid: true
@@ -60,14 +60,14 @@ Thus, pretraining teaches the model to continue text. The training data may cont
 But **a good text continuation model is not necessarily a good assistant**. To see why, suppose the prompt is
 
 $$
-u = \text{``Explain the spectral theorem.''}
+u = \text{`` Explain the spectral theorem.''}
 $$
 
 A pretrained language model treats this prompt as a prefix and tries to continue it in a statistically plausible way. Many continuations may be reasonable under the pretraining distribution, for example:
 
-- ``This question was asked in an exam ...''
-- ``See Chapter 7 for a proof ...''
-- ``The spectral theorem is one of the most important results in linear algebra ...''
+- `` This question was asked in an exam ...''
+- `` See Chapter 7 for a proof ...''
+- `` The spectral theorem is one of the most important results in linear algebra ...''
   
 All of these are plausible continuations of the prompt. However, if the model is being used as an assistant, we want something more specific. We do not only want a continuation that is likely under the distribution of internet text. We want a continuation that is helpful, clear, and adapted to the user’s request.
 
