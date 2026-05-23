@@ -146,21 +146,30 @@ $$
 \theta \leftarrow \theta_0,
 $$
 
-where $\theta_0$ denotes the parameters obtained after pretraining. SFT then continues gradient-based optimization, but now using the supervised dataset \(\mathcal D_{\mathrm{SFT}}\).
+where $\theta_0$ denotes the parameters obtained after pretraining. SFT then continues gradient-based optimization, but now using the supervised dataset $\mathcal D_{\mathrm{SFT}}$.
 
 # What changes during SFT?
 It is important to notice what does **not** change. The Transformer architecture is the same. The model still uses token embeddings, positional information, causal self-attention, MLP blocks, residual connections, layer normalization, and a final softmax over the vocabulary. The next-token prediction mechanism is also the same. What changes is the data distribution and therefore the behavior encouraged by the loss. During pretraining, the model sees sequences sampled from a broad text distribution, which we can denote informally by
+
 $$x \sim \mathcal{D}_{\text{pretrain}}.$$
-It learns to predict, 
+
+It learns to predict,
+
 $$x_t \text{from } x_{<t}$$
+
 During SFT, the model sees formatted prompt-response examples
+
 $$z_i=(u_i,y_i)$$
+
 where $u_i$ is the prompt and $y_i$ is the target response. For response tokens, the prediction problem becomes
+
 $$y_{i,t} \text{from } (u_i,y_{i,<t})$$
+
 Thus, SFT changes the model from a distribution $p_{\theta_{0}}(\cdot\mid \text{generic prefix})$ toward a distribution $p_{\theta_{\text{SFT}}}(\cdot\mid \text{user prompt})$ that assigns more mass to assistant-like continuations.
 
 # SFT as behavior cloning 
 One useful interpretation of SFT is behavior cloning. In reinforcement learning language, a policy maps a context to a distribution over actions. For a language model, the context is a prompt and the action is a sequence of tokens. We can therefore write the language model as a policy
+
 $$
 \pi_\theta(y\mid u)
 =
@@ -168,6 +177,7 @@ p_\theta(y\mid u).
 $$
 
 The SFT dataset contains demonstrations of the behavior we want: 
+
 $$(u_i,y_i) \in \mathcal{D}_{\text{SFT}}$$
 
 The model is trained to imitate these demonstrations. Given prompt $u_i$, it should assign high probability to the demonstrated response $y_i$.
@@ -239,6 +249,7 @@ This shows that SFT is empirical risk minimization with the token-level cross-en
 # Masked Loss on response tokens 
 
 So far, we have described SFT at the level of prompt-response pairs and empirical risk minimization. However, the Transformer itself does not directly take a pair $(u_i,y_i)$ as two separate mathematical objects. It takes a single sequence of tokens as input. Therefore, in practice, each prompt-response pair is formatted as one sequence:
+
 $$
 z_i = (u_i,y_i).
 $$
@@ -266,6 +277,7 @@ $$
 M_{i,t}
 \log p_\theta(z_{i,t+1}\mid z_{i,\leq t}).
 $$
+
 The prompt tokens are used as context, but the model is not penalized for failing to reproduce the prompt. The model is trained to generate the response conditioned on the prompt. This distinction is important. SFT is not asking the model to copy the user. It is asking the model to produce the assistant side of the conversation.
 
 # Minimal SFT Algorithm
@@ -278,6 +290,7 @@ $$
 $$
 
 and
+
 $$
 \mathcal D_{\mathrm{SFT}}
 =
@@ -372,6 +385,7 @@ It only increases the likelihood of the demonstrated answer.
 The second limitation is that the SFT objective is token-level, while the qualities we care about are often sequence-level.
 
 The loss is
+
 $$
 -
 \sum_t
