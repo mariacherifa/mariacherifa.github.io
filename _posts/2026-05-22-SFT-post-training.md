@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Supervised fine tuning"
+title: "Supervised Fine Tuning (SFT)"
 date: 2026-05-22
 tags: transformers post-training deep-learning
 categories: machine-learning
@@ -301,7 +301,7 @@ $$
 \theta \leftarrow \theta_0.
 $$
 
-For minibatches $B\subset \mathcal D_{\mathrm{SFT}}:
+For minibatches $B\subset \mathcal{D}_{\mathrm{SFT}}$:
 
 1. Format each prompt-response pair as a single token sequence $z_i = (u_i,y_i).$
 2. Build a mask $M_i$.
