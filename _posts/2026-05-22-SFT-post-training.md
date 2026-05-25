@@ -256,7 +256,7 @@ $$
 (u,y)\sim \mathcal{D}_{\mathrm{SFT}}.
 $$
 
-For a fixed prompt \(u\), let
+For a fixed prompt $u$, let
 
 $$
 p(y\mid u)
@@ -297,7 +297,7 @@ p(y\mid u)
 \log q_\theta(y\mid u).
 $$
 
-This quantity is the cross-entropy between the target distribution \(p(\cdot\mid u)\) and the model distribution \(q_\theta(\cdot\mid u)\):
+This quantity is the cross-entropy between the target distribution $p(\cdot\mid u)$ and the model distribution $q_\theta(\cdot\mid u)$:
 
 $$
 H\left(p(\cdot\mid u),q_\theta(\cdot\mid u)\right)
@@ -332,7 +332,7 @@ H(p)
 D_{\mathrm{KL}}(p\|q).
 $$
 
-Applying this identity for each prompt \(u\), we obtain
+Applying this identity for each prompt $u$, we obtain
 
 $$
 \mathcal R(\theta)
@@ -350,9 +350,9 @@ q_\theta(\cdot\mid u)
 \right].
 $$
 
-The first term, $ H\left(p(\cdot\mid u)\right),$ is the entropy of the SFT response distribution for the prompt \(u\). It depends only on the data distribution \(\mathcal{D}_{\mathrm{SFT}}\), not on the model parameters \(\theta\).
+The first term, $ H\left(p(\cdot\mid u)\right),$ is the entropy of the SFT response distribution for the prompt $u$. It depends only on the data distribution $\mathcal{D}_{\mathrm{SFT}}$, not on the model parameters $\theta$.
 
-Therefore, minimizing \(\mathcal R(\theta)\) with respect to \(\theta\) is equivalent to minimizing
+Therefore, minimizing $\mathcal R(\theta)$ with respect to $\theta$ is equivalent to minimizing
 
 $$
 \mathbb{E}_{u\sim \mathcal{D}_{\mathrm{SFT}}}
@@ -397,7 +397,7 @@ This is sometimes called the forward KL direction. It penalizes the model when i
 
 This matches the imitation-learning interpretation. The dataset shows the model examples of desired behavior, and the loss increases the probability of these demonstrated responses.
 
-In practice, however, we do not have access to the full distribution \(\mathcal{D}_{\mathrm{SFT}}\). We only observe a finite sample $ \{(u_i,y_i)\}_{i=1}^n \sim \mathcal{D}_{\mathrm{SFT}}.$ So the population risk is replaced by the empirical risk
+In practice, however, we do not have access to the full distribution $\mathcal{D}_{\mathrm{SFT}}$. We only observe a finite sample $ \{(u_i,y_i)\}_{i=1}^n \sim \mathcal{D}_{\mathrm{SFT}}.$ So the population risk is replaced by the empirical risk
 
 $$
 \widehat{\mathcal R}(\theta)
