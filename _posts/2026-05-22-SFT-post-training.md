@@ -319,7 +319,7 @@ Therefore, the population SFT risk can be written as
 $$
 \mathcal R(\theta)
 =
-\mathbb{E}_{u\sim \mathcal{D}_{\mathrm{SFT}}}
+\mathbb{E}_{u\sim \mathcal{D}_{U}}
 \left[
 H\left(
 p(\cdot\mid u),
@@ -328,7 +328,7 @@ q_\theta(\cdot\mid u)
 \right].
 $$
 
-Now recall the standard cross-entropy identity between two distributions:
+where $\mathcal{D}_{U}= \sum_{y} \mathcal{D}_{\text{SFT}}(u,y)$. Now recall the standard cross-entropy identity between two distributions:
 
 $$
 H(p,q)
@@ -343,7 +343,7 @@ Applying this identity for each prompt $u$, we obtain
 $$
 \mathcal R(\theta)
 =
-\mathbb{E}_{u\sim \mathcal{D}_{\mathrm{SFT}}}
+\mathbb{E}_{u\sim \mathcal{D}_{U}}
 \left[
 H\left(p(\cdot\mid u)\right)
 +
@@ -367,7 +367,7 @@ is the entropy of the SFT response distribution for the prompt $u$. It depends o
 Therefore, minimizing $\mathcal R(\theta)$ with respect to $\theta$ is equivalent to minimizing
 
 $$
-\mathbb{E}_{u\sim \mathcal{D}_{\mathrm{SFT}}}
+\mathbb{E}_{u\sim \mathcal{D}_{U}}
 \left[
 D_{\mathrm{KL}}
 \left(
@@ -464,7 +464,7 @@ This can also be written as a cross-entropy under the empirical distribution:
 $$
 \widehat{\mathcal R}(\theta)
 =
-\mathbb{E}_{u\sim \widehat{\mathcal{D}}_{\mathrm{SFT}}}
+\mathbb{E}_{u\sim \widehat{\mathcal{D}}_{U}}
 \left[
 H\left(
 \widehat{\mathcal{D}}_{\mathrm{SFT}}(\cdot\mid u),
@@ -473,12 +473,12 @@ p_\theta(\cdot\mid u)
 \right].
 $$
 
-Using the cross-entropy identity, we get
+where $\widehat{\mathcal{D}}_{U}$ is the empirical marginal distribution of prompts. Using the cross-entropy identity, we get
 
 $$
 \widehat{\mathcal R}(\theta)
 =
-\mathbb{E}_{u\sim \widehat{\mathcal{D}}_{\mathrm{SFT}}}
+\mathbb{E}_{u\sim \widehat{\mathcal{D}}_{U}}
 \left[
 H\left(
 \widehat{\mathcal{D}}_{\mathrm{SFT}}(\cdot\mid u)
@@ -496,7 +496,7 @@ $$
 Therefore, minimizing the empirical SFT risk is equivalent to minimizing
 
 $$
-\mathbb{E}_{u\sim \widehat{\mathcal{D}}_{\mathrm{SFT}}}
+\mathbb{E}_{u\sim \widehat{\mathcal{D}}_{U}}
 \left[
 D_{\mathrm{KL}}
 \left(
