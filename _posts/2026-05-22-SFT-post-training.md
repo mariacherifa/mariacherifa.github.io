@@ -410,8 +410,7 @@ This is the forward KL direction. It penalizes the model when it assigns low pro
 This matches the imitation-learning interpretation. The dataset shows the model examples of desired behavior, and the loss increases the probability of these demonstrated responses.
 
 In practice, however, we do not have access to the full distribution $\mathcal{D}_{\mathrm{SFT}}$. We only observe a finite sample $\{(u_i,y_i)\}_{i=1}^n
-\sim
-\mathcal{D}_{\mathrm{SFT}}$. This finite sample defines an empirical distribution denoted $\widehat{\mathcal{D}}_{\mathrm{SFT}}$. At the level of prompt-response pairs, this empirical distribution is
+\sim \mathcal{D}_{\mathrm{SFT}}$. This finite sample defines an empirical distribution denoted $\widehat{\mathcal{D}}_{\mathrm{SFT}}$. At the level of prompt-response pairs, this empirical distribution is
 
 $$
 \widehat{\mathcal{D}}_{\mathrm{SFT}}(u,y)
@@ -421,13 +420,7 @@ $$
 \mathbf{1}\{(u,y)=(u_i,y_i)\}.
 $$
 
-For a fixed prompt $u$, it also defines an empirical conditional distribution over responses:
-
-$$
-\widehat{\mathcal{D}}_{\mathrm{SFT}}(y\mid u).
-$$
-
-If the same prompt appears several times in the dataset, possibly with different responses, then
+For a fixed prompt $u$, it also defines an empirical conditional distribution over responses $\widehat{\mathcal{D}}_{\mathrm{SFT}}(y\mid u)$. If the same prompt appears several times in the dataset, possibly with different responses, then
 
 $$
 \widehat{\mathcal{D}}_{\mathrm{SFT}}(y\mid u)
@@ -508,12 +501,7 @@ p_\theta(\cdot\mid u)
 \right].
 $$
 
-So even in the empirical version, SFT can be viewed as KL minimization. The model distribution $p_\theta(\cdot\mid u)$ is trained to approximate the empirical demonstration distribution
-
-$$
-\widehat{\mathcal{D}}_{\mathrm{SFT}}(\cdot\mid u).
-$$
-
+So even in the empirical version, SFT can be viewed as KL minimization. The model distribution $p_\theta(\cdot\mid u)$ is trained to approximate the empirical demonstration distribution $\widehat{\mathcal{D}}_{\mathrm{SFT}}(\cdot\mid u)$. 
 In the common case where there is only one demonstrated response $y_i$ for a prompt $u_i$, we have
 
 $$
