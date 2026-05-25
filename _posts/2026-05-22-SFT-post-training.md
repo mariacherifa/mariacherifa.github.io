@@ -250,13 +250,22 @@ This shows that SFT is empirical risk minimization with the token-level cross-en
 
 There is another useful way to understand the SFT objective: through KL divergence. This point of view is important because KL divergence will appear again later in RLHF. In SFT, it appears naturally from the relationship between maximum likelihood, cross-entropy, and KL divergence.
 
-Recall that we use
+Recall that we use the following notation:
 
 $$
 \mathcal{D}_{\mathrm{SFT}}
+\quad \text{is the joint distribution over prompt-response pairs } (u,y),
 $$
 
-to denote the distribution of supervised fine-tuning examples. A sample from this distribution is a prompt-response pair
+and
+
+$$
+\mathcal{D}_{U}
+\quad \text{is the marginal distribution over prompts.}
+$$
+
+
+A sample from this distribution is a prompt-response pair
 
 $$
 (u,y)\sim \mathcal{D}_{\mathrm{SFT}}.
@@ -328,7 +337,7 @@ q_\theta(\cdot\mid u)
 \right].
 $$
 
-where $\mathcal{D}_{U}$ is the marginal distribution of prompts induced by the joint distribution $\mathcal{D}_{\text{SFT}}$. Now recall the standard cross-entropy identity between two distributions:
+Now recall the standard cross-entropy identity between two distributions:
 
 $$
 H(p,q)
