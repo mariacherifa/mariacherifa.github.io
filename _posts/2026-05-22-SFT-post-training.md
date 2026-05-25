@@ -206,7 +206,7 @@ This distribution represents the behavior we want the assistant to learn. It may
 Ideally, we would like to minimize the population risk
 
 $$
-\mathcal R(\theta)= \mathbb E_{(u,y)\sim \mathcal D_{\mathrm{SFT}}}[-log(p_{\theta}(y|u))].
+\mathcal R(\theta)= \mathbb E_{(u,y)\sim \mathcal D_{\mathrm{SFT}}}[-\log(p_{\theta}(y\mid u))].
 $$
 
 Using the autoregressive factorization, this becomes
