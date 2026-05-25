@@ -409,8 +409,8 @@ This is the forward KL direction. It penalizes the model when it assigns low pro
 
 This matches the imitation-learning interpretation. The dataset shows the model examples of desired behavior, and the loss increases the probability of these demonstrated responses.
 
-In practice, however, we do not have access to the full distribution $\mathcal{D}_{\mathrm{SFT}}$. We only observe a finite sample $\{(u_i,y_i)\}_{i=1}^n
-\sim \mathcal{D}_{\mathrm{SFT}}$. This finite sample defines an empirical distribution denoted $\widehat{\mathcal{D}}_{\mathrm{SFT}}$. At the level of prompt-response pairs, this empirical distribution is
+In practice, however, we do not have access to the full distribution $\mathcal{D}_{\text{SFT}}$. We only observe a finite sample $\{(u_i,y_i)\}_{i=1}^n
+\sim \mathcal{D}_{\text{SFT}}$. This finite sample defines an empirical distribution denoted $\widehat{\mathcal{D}}_{\text{SFT}}$. At the level of prompt-response pairs, this empirical distribution is
 
 $$
 \widehat{\mathcal{D}}_{\mathrm{SFT}}(u,y)
