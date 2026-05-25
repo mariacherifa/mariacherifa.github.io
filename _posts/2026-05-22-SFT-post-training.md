@@ -250,7 +250,13 @@ This shows that SFT is empirical risk minimization with the token-level cross-en
 
 There is another useful way to understand the SFT objective: through KL divergence. This point of view is important because KL divergence will appear again later in RLHF. In SFT, it appears naturally from the relationship between maximum likelihood, cross-entropy, and KL divergence.
 
-Recall that we use $\mathcal{D}_{\mathrm{SFT}}$ to denote the distribution of supervised fine-tuning examples. A sample from this distribution is a prompt-response pair
+Recall that we use
+
+$$
+\mathcal{D}_{\mathrm{SFT}}
+$$
+
+to denote the distribution of supervised fine-tuning examples. A sample from this distribution is a prompt-response pair
 
 $$
 (u,y)\sim \mathcal{D}_{\mathrm{SFT}}.
@@ -322,7 +328,7 @@ q_\theta(\cdot\mid u)
 \right].
 $$
 
-Now recall the standard cross-entropy identity between two distributions
+Now recall the standard cross-entropy identity between two distributions:
 
 $$
 H(p,q)
@@ -350,7 +356,13 @@ q_\theta(\cdot\mid u)
 \right].
 $$
 
-The first term, $H\left(p(\cdot\mid u)\right)$, is the entropy of the SFT response distribution for the prompt $u$. It depends only on the data distribution $\mathcal{D}_{\mathrm{SFT}}$, not on the model parameters $\theta$.
+The first term,
+
+$$
+H\left(p(\cdot\mid u)\right),
+$$
+
+is the entropy of the SFT response distribution for the prompt $u$. It depends only on the data distribution $\mathcal{D}_{\mathrm{SFT}}$, not on the model parameters $\theta$.
 
 Therefore, minimizing $\mathcal R(\theta)$ with respect to $\theta$ is equivalent to minimizing
 
@@ -393,11 +405,51 @@ p_\theta(\cdot\mid u)
 \right).
 $$
 
-This is sometimes called the forward KL direction. It penalizes the model when it assigns low probability to responses that appear in the SFT data. So SFT encourages the model to cover the demonstrated behavior.
+This is the forward KL direction. It penalizes the model when it assigns low probability to responses that appear in the SFT data. So SFT encourages the model to cover the demonstrated behavior.
 
 This matches the imitation-learning interpretation. The dataset shows the model examples of desired behavior, and the loss increases the probability of these demonstrated responses.
 
-In practice, however, we do not have access to the full distribution $\mathcal{D}_{\mathrm{SFT}}$. We only observe a finite sample $ \{(u_i,y_i)\}_{i=1}^n \sim \mathcal{D}_{\mathrm{SFT}}.$ So the population risk is replaced by the empirical risk
+In practice, however, we do not have access to the full distribution $\mathcal{D}_{\mathrm{SFT}}$. We only observe a finite sample $\{(u_i,y_i)\}_{i=1}^n
+\sim
+\mathcal{D}_{\mathrm{SFT}}$. This finite sample defines an empirical distribution denoted $\widehat{\mathcal{D}}_{\mathrm{SFT}}$. At the level of prompt-response pairs, this empirical distribution is
+
+$$
+\widehat{\mathcal{D}}_{\mathrm{SFT}}(u,y)
+=
+\frac{1}{n}
+\sum_{i=1}^{n}
+\mathbf{1}\{(u,y)=(u_i,y_i)\}.
+$$
+
+For a fixed prompt $u$, it also defines an empirical conditional distribution over responses:
+
+$$
+\widehat{\mathcal{D}}_{\mathrm{SFT}}(y\mid u).
+$$
+
+If the same prompt appears several times in the dataset, possibly with different responses, then
+
+$$
+\widehat{\mathcal{D}}_{\mathrm{SFT}}(y\mid u)
+=
+\frac{
+\sum_{i=1}^{n}
+\mathbf{1}\{u_i=u,\; y_i=y\}
+}{
+\sum_{i=1}^{n}
+\mathbf{1}\{u_i=u\}
+}.
+$$
+
+If each prompt appears only once, then for the training prompt $u_i$, the empirical conditional distribution is concentrated on the demonstrated response $y_i$:
+
+$$
+\widehat{\mathcal{D}}_{\mathrm{SFT}}(y\mid u_i)
+=
+\mathbf{1}\{y=y_i\}.
+$$
+
+Now the empirical SFT risk is
 
 $$
 \widehat{\mathcal R}(\theta)
@@ -408,16 +460,93 @@ $$
 \log p_\theta(y_i\mid u_i).
 $$
 
-Using the autoregressive factorization,
+This can also be written as a cross-entropy under the empirical distribution:
 
 $$
-\log p_\theta(y_i\mid u_i)
+\widehat{\mathcal R}(\theta)
 =
-\sum_{t=1}^{m_i}
-\log p_\theta(y_{i,t}\mid u_i,y_{i,<t}),
+\mathbb{E}_{u\sim \widehat{\mathcal{D}}_{\mathrm{SFT}}}
+\left[
+H\left(
+\widehat{\mathcal{D}}_{\mathrm{SFT}}(\cdot\mid u),
+p_\theta(\cdot\mid u)
+\right)
+\right].
 $$
 
-we recover the usual token-level SFT objective:
+Using the cross-entropy identity, we get
+
+$$
+\widehat{\mathcal R}(\theta)
+=
+\mathbb{E}_{u\sim \widehat{\mathcal{D}}_{\mathrm{SFT}}}
+\left[
+H\left(
+\widehat{\mathcal{D}}_{\mathrm{SFT}}(\cdot\mid u)
+\right)
++
+D_{\mathrm{KL}}
+\left(
+\widehat{\mathcal{D}}_{\mathrm{SFT}}(\cdot\mid u)
+\|
+p_\theta(\cdot\mid u)
+\right)
+\right].
+$$
+
+Therefore, minimizing the empirical SFT risk is equivalent to minimizing
+
+$$
+\mathbb{E}_{u\sim \widehat{\mathcal{D}}_{\mathrm{SFT}}}
+\left[
+D_{\mathrm{KL}}
+\left(
+\widehat{\mathcal{D}}_{\mathrm{SFT}}(\cdot\mid u)
+\|
+p_\theta(\cdot\mid u)
+\right)
+\right].
+$$
+
+So even in the empirical version, SFT can be viewed as KL minimization. The model distribution $p_\theta(\cdot\mid u)$ is trained to approximate the empirical demonstration distribution
+
+$$
+\widehat{\mathcal{D}}_{\mathrm{SFT}}(\cdot\mid u).
+$$
+
+In the common case where there is only one demonstrated response $y_i$ for a prompt $u_i$, we have
+
+$$
+\widehat{\mathcal{D}}_{\mathrm{SFT}}(\cdot\mid u_i)
+=
+\delta_{y_i}.
+$$
+
+Then the KL divergence becomes
+
+$$
+D_{\mathrm{KL}}
+\left(
+\delta_{y_i}
+\|
+p_\theta(\cdot\mid u_i)
+\right)
+=
+-\log p_\theta(y_i\mid u_i).
+$$
+
+Thus, the usual negative log-likelihood loss is exactly the KL divergence from the empirical demonstration distribution to the model distribution, up to constants independent of $\theta$.
+
+Finally, using the autoregressive factorization,
+
+$$
+p_\theta(y_i\mid u_i)
+=
+\prod_{t=1}^{m_i}
+p_\theta(y_{i,t}\mid u_i,y_{i,<t}),
+$$
+
+we recover the token-level SFT objective:
 
 $$
 \widehat{\mathcal R}(\theta)
@@ -443,7 +572,7 @@ $$
 \text{move the model distribution closer to the SFT demonstration distribution.}
 $$
 
-This perspective will be useful when we discuss RLHF. In RLHF, we will not only imitate demonstrations. We will also optimize the model using human preferences. But while doing so, we usually want to prevent the model from moving too far away from the SFT model. 
+This perspective will be useful when we discuss RLHF. In RLHF, we will not only imitate demonstrations. We will also optimize the model using human preferences. But while doing so, we usually want to prevent the model from moving too far away from the SFT model. KL divergence will then appear again, not only as an interpretation of the loss, but as an explicit regularization term. 
 
 # Masked Loss on response tokens 
 
