@@ -328,7 +328,7 @@ q_\theta(\cdot\mid u)
 \right].
 $$
 
-where $\mathcal{D}_{U}= \sum_{y} \mathcal{D}_{\text{SFT}}(u,y)$. Now recall the standard cross-entropy identity between two distributions:
+where $\mathcal{D}_{U}$ is the marginal distribution of prompts induced by the joint distribution $\mathcal{D}_{\mathrm{SFT}}$. Now recall the standard cross-entropy identity between two distributions:
 
 $$
 H(p,q)
