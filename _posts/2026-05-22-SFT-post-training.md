@@ -409,12 +409,19 @@ This is the forward KL direction. It penalizes the model when it assigns low pro
 
 This matches the imitation-learning interpretation. The dataset shows the model examples of desired behavior, and the loss increases the probability of these demonstrated responses.
 
-In practice, however, we do not have access to the full distribution $\mathcal{D}_{\text{SFT}}$. We only observe a finite sample $\{(u_i,y_i)\}_{i=1}^n
-\sim \mathcal{D}_{\text{SFT}}$. This finite sample defines an empirical distribution denoted $\widehat{\mathcal{D}}_{\text{SFT}}$. At the level of prompt-response pairs, this empirical distribution is
+In practice, however, we do not have access to the full distribution
+$\mathcal{D}_{\mathrm{SFT}}$. We only observe a finite sample
 
 $$
-\widehat{\mathcal{D}}_{\mathrm{SFT}}(u,y)
-=
+\{(u_i,y_i)\}_{i=1}^{n}
+\sim
+\mathcal{D}_{\mathrm{SFT}}.
+$$
+
+The finite sample induces an empirical distribution over prompt-response pairs:
+
+$$
+\widehat{\mathcal{D}}_{\mathrm{SFT}}(u,y)=
 \frac{1}{n}
 \sum_{i=1}^{n}
 \mathbf{1}\{(u,y)=(u_i,y_i)\}.
@@ -423,8 +430,7 @@ $$
 For a fixed prompt $u$, it also defines an empirical conditional distribution over responses $\widehat{\mathcal{D}}_{\mathrm{SFT}}(y\mid u)$. If the same prompt appears several times in the dataset, possibly with different responses, then
 
 $$
-\widehat{\mathcal{D}}_{\mathrm{SFT}}(y\mid u)
-=
+\widehat{\mathcal{D}}_{\mathrm{SFT}}(y\mid u)=
 \frac{
 \sum_{i=1}^{n}
 \mathbf{1}\{u_i=u,\; y_i=y\}
