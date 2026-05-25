@@ -350,7 +350,7 @@ q_\theta(\cdot\mid u)
 \right].
 $$
 
-The first term, $ H\left(p(\cdot\mid u)\right),$ is the entropy of the SFT response distribution for the prompt $u$. It depends only on the data distribution $\mathcal{D}_{\mathrm{SFT}}$, not on the model parameters $\theta$.
+The first term, $H\left(p(\cdot\mid u)\right)$, is the entropy of the SFT response distribution for the prompt $u$. It depends only on the data distribution $\mathcal{D}_{\mathrm{SFT}}$, not on the model parameters $\theta$.
 
 Therefore, minimizing $\mathcal R(\theta)$ with respect to $\theta$ is equivalent to minimizing
 
