@@ -158,4 +158,4 @@ r(u,y^+)-r(u,y^-)
 \right),
 $$
 
-where \(y^+\) is the preferred response and \(y^-\) is the rejected response.
+where $y^+$ is the preferred response and $y^-$ is the rejected response.
