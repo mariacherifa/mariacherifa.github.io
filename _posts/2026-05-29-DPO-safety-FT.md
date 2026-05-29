@@ -73,11 +73,11 @@ $$
 p^*(y\mid u)
 = \frac{
 p_{\mathrm{ref}}(y\mid u)
-\exp\left(\frac{1}{\beta}r(u,y)\right)
+\exp\left(r(u,y)/\beta\right)
 }{
 \sum_{y'}
 p_{\mathrm{ref}}(y'\mid u)
-\exp\left(\frac{1}{\beta}r(u,y')\right)
+\exp\left(r(u,y')/\beta\right)
 }.
 $$
 
@@ -112,7 +112,7 @@ c(u) =
 \log
 \sum_{y'}
 p_{\mathrm{ref}}(y'\mid u)
-\exp\left(\frac{1}{\beta}r(u,y')\right).
+\exp\left(r(u,y')/\beta\right).
 $$
 
 Therefore, for a fixed prompt, the reward is equivalent up to an additive constant to the log-ratio
