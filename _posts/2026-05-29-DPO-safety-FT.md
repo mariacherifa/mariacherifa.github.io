@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "DPO and Safety Fine Tuning"
-date: 2026-05-21
+date: 2026-05-29
 tags: transformers attention deep-learning
 categories: machine-learning
 math: true
