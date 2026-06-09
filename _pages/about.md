@@ -18,4 +18,5 @@ social: true  # includes social icons at the bottom of the page
 
 I am a research and teaching assistant at [the Mathematics Department (IMO) of Paris-Saclay University (Orsay)](https://www.imo.universite-paris-saclay.fr/fr/). I hold a Ph.D. from [Institut Polytechnique de Paris](https://www.ip-paris.fr). My Ph.D. was conducted jointly at [ENSAE-CREST](https://crest.science) and the [Criteo AI Lab](https://ailab.criteo.com), under the supervision of [Vianney Perchet](https://vianney.ai) and [Clément Calauzènes](https://scholar.google.com/citations?user=lFsKnyUAAAAJ&hl=en). My research focuses on online matching in bipartite graphs and, more broadly, on online allocation problems. Before my Ph.D., I graduated from the [master MVA (ENS Paris Saclay)](https://www.master-mva.com) in 2021, with a specialization in machine learning.
 
+Recently, I have become interested in the theoretical aspects of attention mechanisms in Transformers, as well as post-training methods and safety challenges in large language models.
 
