@@ -162,8 +162,137 @@ where $y^+$ is the preferred response and $y^-$ is the rejected response. In RLH
 
 $$r(u,y)= \beta \log\frac{p_{\theta}(y\mid u)}{p_{\text{ref}}(y\mid u)} +c(u)$$
 
-Thus, the preference probability becomes: 
+Substituting this expression into the Bradley--Terry model gives
 
 $$\mathbb{P}_{\theta}(y^{+}\succ y^{-} \mid u) = \sigma \left(\beta \left[ \log \frac{p_{\theta}(y^{+}\mid u)}{p_{\text{ref}}(y^{+}\mid u)}-\log \frac{p_{\theta}(y^{-}\mid u)}{p_{\text{ref}}(y^{-}\mid u)} \right] \right)$$
 
+So DPO trains the policy so that the preferred response has a larger policy-to-reference log-ratio than the rejected response:
+
+$$
+\log
+\frac{
+p_\theta(y^+\mid u)
+}{
+p_{\mathrm{ref}}(y^+\mid u)
+}
+>
+\log
+\frac{
+p_\theta(y^-\mid u)
+}{
+p_{\mathrm{ref}}(y^-\mid u)
+}.
+$$
+
+This is the central idea of DPO. The model does not need an explicit reward model. The quantity
+
+$$
+\beta
+\log
+\frac{
+p_\theta(y\mid u)
+}{
+p_{\mathrm{ref}}(y\mid u)
+}
+$$
+
+plays the role of an implicit reward.
+
+# DPO as Maximum Likelihood Estimation
+
+Let
+
+$$
+\mathcal{D}_{\mathrm{pref}}
+$$
+
+denote the distribution of preference data. A sample from this distribution is a triple
+
+$$
+(u,y^+,y^-)\sim \mathcal{D}_{\mathrm{pref}},
+$$
+
+where \(y^+\) is preferred to \(y^-\).
+
+Under the DPO preference model, the probability of observing this preference is
+
+$$
+\mathbb{P}_{\theta}
+\left(
+y^+ \succ y^- \mid u
+\right)
+=
+\sigma
+\left(
+\beta
+\left[
+\log
+\frac{
+p_\theta(y^+\mid u)
+}{
+p_{\mathrm{ref}}(y^+\mid u)
+}
+-
+\log
+\frac{
+p_\theta(y^-\mid u)
+}{
+p_{\mathrm{ref}}(y^-\mid u)
+}
+\right]
+\right).
+$$
+
+Therefore, DPO can be trained by maximum likelihood on preference pairs. Equivalently, we minimize the negative log-likelihood of the observed preferences:
+
+$$
+\mathcal{L}_{\mathrm{DPO}}(\theta)
+=
+-
+\mathbb{E}_{(u,y^+,y^-)\sim \mathcal{D}_{\mathrm{pref}}}
+\left[
+\log
+\sigma
+\left(
+\beta
+\left[
+\log
+\frac{
+p_\theta(y^+\mid u)
+}{
+p_{\mathrm{ref}}(y^+\mid u)
+}
+-
+\log
+\frac{
+p_\theta(y^-\mid u)
+}{
+p_{\mathrm{ref}}(y^-\mid u)
+}
+\right]
+\right)
+\right].
+$$
+
+This is the DPO objective.
+
+The key point is that DPO compares the preferred and rejected responses through their policy-to-reference ratios, not only through their raw probabilities under the policy. More precisely, it compares
+
+$$
+\frac{
+p_\theta(y^+\mid u)
+}{
+p_{\mathrm{ref}}(y^+\mid u)
+}
+\qquad
+\text{and}
+\qquad
+\frac{
+p_\theta(y^-\mid u)
+}{
+p_{\mathrm{ref}}(y^-\mid u)
+}.
+$$
+
+Thus, DPO encourages the preferred response to become more likely relative to the reference model, and the rejected response to become less likely relative to the reference model. The reference policy acts as an anchor: the model is not only learning which response is better, but also how to move away from the supervised model in a controlled way.
 
