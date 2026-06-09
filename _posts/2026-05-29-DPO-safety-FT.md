@@ -158,4 +158,12 @@ r(u,y^+)-r(u,y^-)
 \right),
 $$
 
-where $y^+$ is the preferred response and $y^-$ is the rejected response.
+where $y^+$ is the preferred response and $y^-$ is the rejected response. In RLHF $r$ is learned separatly using preference data, but DPO instead replaces $r$ by,
+
+$$r(u,y)= \beta \log\frac{p_{\theta}(y\mid u)}{p_{\text{ref}}(y\mid u)} +c(u)$$
+
+Thus, the preference probability becomes: 
+
+$$\mathbb{P}_{\theta}(y^{+}\succ y^{-} \mid u) = \sigma \left(\beta \left[ \log \frac{p_{\theta}(y^{+}\mid u)}{p_{\text{ref}}(y^{+}\mid u)}-\log \frac{p_{\theta}(y^{-}\mid u)}{p_{\text{ref}}(y^{-}\mid u)} \right] \right)$$
+
+
