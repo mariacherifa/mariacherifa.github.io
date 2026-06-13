@@ -387,7 +387,7 @@ denote the post-training objective we would optimize without the safety constrai
 Safety fine-tuning adds a constraint on the probability mass assigned to unsafe responses:
 
 $$
-\mathbb{E}{u\sim \mathcal{D}{U}}
+\mathbb{E}_{u\sim \mathcal{D}{U}}
 \left[
 p_\theta
 \left(
@@ -409,7 +409,7 @@ $$
 subject to
 
 $$
-\mathbb{E}{u\sim \mathcal{D}{U}}
+\mathbb{E}_{u\sim \mathcal{D}{U}}
 \left[
 p_\theta
 \left(
@@ -448,7 +448,7 @@ $$
 \mathcal{L}{\mathrm{task}}(\theta)
 +
 \lambda
-\mathbb{E}{u\sim \mathcal{D}{U}}
+\mathbb{E}_{u\sim \mathcal{D}{U}}
 \left[
 p\theta
 \left(
