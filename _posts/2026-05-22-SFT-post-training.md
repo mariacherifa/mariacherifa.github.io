@@ -419,9 +419,7 @@ In practice, however, we do not have access to the full distribution
 $\mathcal{D}_{\mathrm{SFT}}$. We only observe a finite sample
 
 $$
-\{(u_i,y_i)\}_{i=1}^{n}
-\sim
-\mathcal{D}_{\mathrm{SFT}}.
+\{(u_i,y_i)\}_{i=1}^{n}.
 $$
 
 The finite sample induces an empirical distribution over prompt-response pairs:
