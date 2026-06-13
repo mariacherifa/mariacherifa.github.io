@@ -329,6 +329,7 @@ $$
 
 and
 
+$$
 \mathcal{Y}\setminus \mathcal{Y}_{\mathrm{safe}}(u).
 $$
 
