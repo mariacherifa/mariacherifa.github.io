@@ -331,13 +331,7 @@ $$
 which represents the set of acceptable responses for this prompt. Its complement is
 
 $$
-\mathcal{Y}\setminus \mathcal{Y}_{\mathrm{safe}}(u).
-$$
-
-The set
-
-$$
-\mathcal{Y}_{\mathrm{unsafe}}(u)
+\mathcal{Y}_{\mathrm{unsafe}}(u)= \mathcal{Y}\setminus \mathcal{Y}_{\mathrm{safe}}(u).
 $$
 
 contains responses that should not be produced for the prompt $u$.
