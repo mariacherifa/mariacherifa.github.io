@@ -297,6 +297,8 @@ $$
 Thus, DPO encourages the preferred response to become more likely relative to the reference model, and the rejected response to become less likely relative to the reference model. The reference policy acts as an anchor: the model is not only learning which response is better, but also how to move away from the supervised model in a controlled way.
 
 # From Preference Optimization to Safety Fine-Tuning
+From Preference Optimization to Safety Fine-Tuning
+
 So far, post-training has been about shaping the conditional distribution
 
 $$
@@ -308,10 +310,10 @@ SFT does this by imitating desired responses. RLHF and DPO do it by using prefer
 Until now, the main question was:
 
 $$
-\text{Which response is better?}
+\text{Which response should the model prefer?}
 $$
 
-But for safety, the question changes slightly. We are not only comparing responses by quality. We also need to ask whether a response is acceptable at all.
+For safety, we need a slightly different question. We do not only want to rank responses by quality. We also want to distinguish responses that are acceptable from responses that should not be produced.
 
 For a given prompt $u$, let
 
@@ -319,7 +321,7 @@ $$
 \mathcal{Y}
 $$
 
-denote the set of possible responses. In a safety-sensitive setting, we can think of this set as being divided into two regions:
+be the set of possible responses. In a safety-sensitive setting, we can introduce a subset
 
 $$
 \mathcal{Y}_{\mathrm{safe}}(u)
@@ -327,19 +329,37 @@ $$
 \mathcal{Y},
 $$
 
-and
+which represents the set of acceptable responses for this prompt. Its complement is
 
 $$
 \mathcal{Y}\setminus \mathcal{Y}_{\mathrm{safe}}(u).
 $$
 
-Here $\mathcal{Y}{\mathrm{safe}}(u)$ is the set of responses that are acceptable for the prompt $u$, while $\mathcal{Y}{\mathrm{unsafe}}(u)$ contains responses that should not be produced.
+The set
 
-For example, if the prompt is a normal mathematical question, then a direct answer belongs to $\mathcal{Y}{\mathrm{safe}}(u)$. But if the prompt asks for dangerous instructions, private information, or harmful advice, then a detailed answer may belong to $\mathcal{Y}{\mathrm{unsafe}}(u)$. In that case, a safe response may instead be a refusal, a redirection, or high-level non-actionable information.
+$$
+\mathcal{Y}_{\mathrm{unsafe}}(u)
+$$
 
-So safety is not simply about making the model less helpful. It is about restricting the space of acceptable responses depending on the prompt.
+contains responses that should not be produced for the prompt $u$.
 
-Ideally, we would like the model to put most of its probability mass on safe responses:
+For example, if $u$ is a standard mathematical question, then a direct explanation may belong to
+
+$$
+\mathcal{Y}_{\mathrm{safe}}(u).
+$$
+
+But if $u$ asks for dangerous instructions, private information, or harmful advice, then a detailed answer may belong to
+
+$$
+\mathcal{Y}_{\mathrm{unsafe}}(u).
+$$
+
+In that case, a safe response may instead be a refusal, a redirection, or high-level non-actionable information.
+
+So safety is not the opposite of helpfulness. Rather, safety restricts the set of responses among which the model should be helpful.
+
+Ideally, for each prompt $u$, we would like the model to assign almost all its probability mass to safe responses:
 
 $$
 p_\theta
@@ -350,7 +370,7 @@ p_\theta
 \approx 1.
 $$
 
-Equivalently, we want
+Equivalently, we would like the probability of unsafe responses to be small:
 
 $$
 p_\theta
@@ -361,17 +381,17 @@ p_\theta
 \approx 0.
 $$
 
-This gives a natural constrained optimization view. We still want the model to produce useful responses, but we want the probability of unsafe responses to remain small.
+This gives a natural constrained optimization view of safety fine-tuning.
 
 Let
 
 $$
-\mathcal{L}_{\mathrm{help}}(\theta)
+\mathcal{L}_{\mathrm{task}}(\theta)
 $$
 
-denote a helpfulness-oriented training loss. This could be an SFT loss, an RLHF objective, or a DPO loss, depending on the post-training method we are using.
+denote the post-training objective we would optimize without the safety constraint. Depending on the method, this could be an SFT loss, an RLHF objective, or a DPO loss.
 
-Safety fine-tuning adds a constraint of the form
+Safety fine-tuning adds a constraint on the probability mass assigned to unsafe responses:
 
 $$
 \mathbb{E}{u\sim \mathcal{D}{U}}
@@ -386,11 +406,11 @@ p_\theta
 \varepsilon.
 $$
 
-So the constrained problem becomes
+Thus, we can write the constrained problem as
 
 $$
 \min_\theta
-\mathcal{L}_{\mathrm{help}}(\theta)
+\mathcal{L}_{\mathrm{task}}(\theta)
 $$
 
 subject to
@@ -411,19 +431,30 @@ $$
 This formulation says:
 
 $$
-\text{optimize helpfulness, but keep unsafe behavior rare.}
+\text{optimize the post-training objective, but keep unsafe behavior rare.}
 $$
 
-The parameter $\varepsilon$ controls how much unsafe behavior we are willing to tolerate. A smaller $\varepsilon$ corresponds to a stricter safety constraint.
+The parameter
 
-As usual in constrained optimization, we can replace the constraint by a regularization term. This gives an objective of the form
+$$
+\varepsilon
+$$
+
+controls the strength of the safety requirement. A smaller value of (\varepsilon) means that the model is allowed to put less probability mass on unsafe responses.
+
+As usual in constrained optimization, we can pass from the constrained problem to a regularized objective. Introducing a multiplier
+
+$$
+\lambda>0,
+$$
+
+we obtain
 
 $$
 \min_\theta
-\mathcal{L}{\mathrm{help}}(\theta)
+\mathcal{L}{\mathrm{task}}(\theta)
 +
 \lambda
-,
 \mathbb{E}{u\sim \mathcal{D}{U}}
 \left[
 p\theta
@@ -431,80 +462,88 @@ p\theta
 \mathcal{Y}_{\mathrm{unsafe}}(u)
 \mid u
 \right)
-\right],
+\right].
 $$
 
-where
+The first term optimizes the usual post-training objective. The second term penalizes probability mass assigned to unsafe responses.
+
+So, from this point of view, safety fine-tuning is a regularized post-training problem:
 
 $$
-\lambda>0
+\text{post-training objective}
+\quad
++
+\quad
+\text{safety penalty}.
 $$
 
-controls the strength of the safety penalty.
+This formulation is useful conceptually. It says that safety is not only about adding refusal examples. It is about changing the distribution
 
-This is the regularized view of safety fine-tuning. The first term trains the model to be useful. The second term penalizes probability mass assigned to unsafe responses.
+$$
+p_\theta(y\mid u)
+$$
 
-In practice, we do not know the full set
+so that unsafe regions of the response space receive small probability.
+
+Of course, in practice, we do not know the full set
 
 $$
 \mathcal{Y}_{\mathrm{unsafe}}(u)
 $$
 
-for every prompt $u$. We only observe examples. This is why safety fine-tuning is implemented through data.
+for every prompt. The set of all possible unsafe responses is too large to enumerate. Therefore, the safety constraint has to be approximated from data.
 
-In a supervised safety dataset, we may have examples
+In supervised safety fine-tuning, the data consists of examples
 
 $$
 (u_i,y_i),
 $$
 
-where $y_i$ is the desired safe response. If the prompt is safe, $y_i$ can be a direct answer. If the prompt is unsafe, $y_i$ can be a refusal or a safe redirection.
+where (y_i) is the desired safe response to the prompt (u_i). If the prompt is safe, (y_i) may be a direct answer. If the prompt is unsafe, (y_i) may be a refusal, a redirection, or a safer alternative.
 
-Then the training loss is still a negative log-likelihood,
+The training objective is still a negative log-likelihood term,
 
 $$
 -\log p_\theta(y_i\mid u_i),
 $$
 
-but the target response now encodes the safety behavior we want.
+but the target response now encodes safety behavior.
 
-In a preference-based safety dataset, we may instead have triples
+In preference-based safety fine-tuning, the data consists of triples
 
 $$
 (u_i,y_i^+,y_i^-),
 $$
 
-where
+where (y_i^+) is safer or more appropriate than (y_i^-). Ideally,
 
 $$
-y_i^+ \in \mathcal{Y}_{\mathrm{safe}}(u_i)
+y_i^+ \in \mathcal{Y}_{\mathrm{safe}}(u_i),
 $$
 
-is the safer response, and
+while
 
 $$
 y_i^- \in \mathcal{Y}_{\mathrm{unsafe}}(u_i)
 $$
 
-is the unsafe or less appropriate response.
-
-The preference label says
+or is at least less safe. The preference label says
 
 $$
 y_i^+ \succ y_i^-.
 $$
 
-This fits directly into DPO. The DPO objective will increase the relative probability of the safer response and decrease the relative probability of the unsafe response.
+This fits naturally with DPO. The DPO objective can increase the policy-to-reference ratio of the safer response and decrease the policy-to-reference ratio of the unsafe response.
 
-Thus, safety fine-tuning can be understood as constrained behavior shaping. We are still modifying
+Thus, safety fine-tuning can be understood as constrained behavior shaping. We are still modifying the same conditional distribution
 
 $$
 p_\theta(y\mid u),
 $$
 
-but now we are not only asking which responses are preferred. We are also imposing that certain regions of the response space should receive very small probability.
+but the objective now includes a safety constraint: unsafe regions of the response space should receive small probability.
 
-The main idea is therefore:
+The main idea is therefore
 
 $$
 \text{post-training for helpfulness}
