@@ -492,7 +492,7 @@ $$
 (u_i,y_i),
 $$
 
-where (y_i) is the desired safe response to the prompt (u_i). If the prompt is safe, (y_i) may be a direct answer. If the prompt is unsafe, (y_i) may be a refusal, a redirection, or a safer alternative.
+where $y_i$ is the desired safe response to the prompt $u_i$. If the prompt is safe, $y_i$ may be a direct answer. If the prompt is unsafe, $y_i$ may be a refusal, a redirection, or a safer alternative.
 
 The training objective is still a negative log-likelihood term,
 
@@ -508,7 +508,7 @@ $$
 (u_i,y_i^+,y_i^-),
 $$
 
-where (y_i^+) is safer or more appropriate than (y_i^-). Ideally,
+where $y_i^+$ is safer or more appropriate than $y_i^-$. Ideally,
 
 $$
 y_i^+ \in \mathcal{Y}_{\mathrm{safe}}(u_i),
