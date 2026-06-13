@@ -445,12 +445,12 @@ we obtain
 
 $$
 \min_\theta
-\mathcal{L}{\mathrm{task}}(\theta)
+\mathcal{L}_{\mathrm{task}}(\theta)
 +
 \lambda
 \mathbb{E}_{u\sim \mathcal{D}_{U}}
 \left[
-p\theta
+p_{\theta}
 \left(
 \mathcal{Y}_{\mathrm{unsafe}}(u)
 \mid u
