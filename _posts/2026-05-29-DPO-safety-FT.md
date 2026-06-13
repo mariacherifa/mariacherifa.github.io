@@ -297,7 +297,6 @@ $$
 Thus, DPO encourages the preferred response to become more likely relative to the reference model, and the rejected response to become less likely relative to the reference model. The reference policy acts as an anchor: the model is not only learning which response is better, but also how to move away from the supervised model in a controlled way.
 
 # From Preference Optimization to Safety Fine-Tuning
-From Preference Optimization to Safety Fine-Tuning
 
 So far, post-training has been about shaping the conditional distribution
 
