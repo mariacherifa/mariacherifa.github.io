@@ -433,7 +433,7 @@ $$
 \varepsilon
 $$
 
-controls the strength of the safety requirement. A smaller value of (\varepsilon) means that the model is allowed to put less probability mass on unsafe responses.
+controls the strength of the safety requirement. A smaller value of $\varepsilon$ means that the model is allowed to put less probability mass on unsafe responses.
 
 As usual in constrained optimization, we can pass from the constrained problem to a regularized objective. Introducing a multiplier
 
