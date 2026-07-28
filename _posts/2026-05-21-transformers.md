@@ -290,9 +290,9 @@ $$
 =
 \mathrm{softmax}
 \left(
-\frac{QK^\top}{\sqrt{d_k}}
+\frac{QK^\top}{\sqrt{d_k}} 
 \right)
-V.
+V \in \mathbb{R}^{T \times d_{v}}
 $$
 
 This is the **scaled dot-product self-attention** formula.
