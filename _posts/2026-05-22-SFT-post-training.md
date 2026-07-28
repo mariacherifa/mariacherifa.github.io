@@ -570,6 +570,8 @@ $$
 \text{move the model distribution closer to the SFT demonstration distribution.}
 $$
 
+Viewing SFT as KL-divergence minimization highlights that its direct objective is to imitate the distribution of demonstrated responses. Helpfulness and truthfulness are learned only insofar as these properties are represented in the demonstration data; they are not directly optimized by the SFT objective itself.
+
 This perspective will be useful when we discuss RLHF. In RLHF, we will not only imitate demonstrations. We will also optimize the model using human preferences. But while doing so, we usually want to prevent the model from moving too far away from the SFT model. KL divergence will then appear again, not only as an interpretation of the loss, but as an explicit regularization term. 
 
 # Masked Loss on response tokens 
