@@ -6,6 +6,11 @@ description: #Materials for courses you taught. Replace this text with your desc
 nav: true
 nav_order: 6
 ---
+- 19/10/2026 [Sigma Nova research talk], Paris, France.
+
+*Online Sinkhorn: Optimal Transport distances from sample streams *
+[slides](https://mariacherifa.github.io/assets/pdf/Sigma_nova_OT.pdf)
+
 - 13/02/2026 [Statistics Seminar of MAP5 Lab](https://map5.mi.parisdescartes.fr/events/maria-cherifa-2/), MAP5, Paris, France.
 
 *Dynamics and learning in online allocation problems*
