@@ -1,8 +1,8 @@
 ---
 layout: post
-date: 2026-05-21 09:30:00-0400
+date: 2026-06-21 09:30:00-0400
 inline: true
 ---
 
-I’m starting a blog where I share my notes and intuitions on transformers.
+I am working on Attention Dynamics and Differential Inclusions [here](https://mariacherifa.github.io/_posts/2026-10-10-attention-dynamics.md) for more informations. 
 
